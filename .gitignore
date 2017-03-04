@@ -31,3 +31,4 @@
 *.sdf
 *.sln
 *.vcxproj*
+.vs

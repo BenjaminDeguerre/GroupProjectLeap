@@ -3,15 +3,15 @@
 
 #include <iostream>
 #include <cstring>
-#include "Leap.h"
-#include <iostream>  // standard C++ I/O
 
+#include "Leap.h"
 
 class Filter {
 public:
   Filter();
-  Leap::Vector filterMeanHand(std::vector<Leap::Frame> frame, int id);
+  Leap::Vector filterMean(std::vector<Leap::Vector> positions);
 
+private:
 };
 
 #endif
