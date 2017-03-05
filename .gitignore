@@ -33,3 +33,5 @@
 *.vcxproj*
 .vs
 *.VC*
+x64
+bin
