@@ -32,3 +32,4 @@
 *.sln
 *.vcxproj*
 .vs
+*.VC*
