@@ -35,3 +35,4 @@
 *.VC*
 x64
 bin
+*.opensdf
