@@ -19,4 +19,5 @@ TO DO :
 	- cleanup and merge code;
 	- set up listener to write letters on image;
 	- seek for ml letter recognition;
+	- report;
 
