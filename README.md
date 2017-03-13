@@ -11,6 +11,12 @@ Benjamin Deguerre
 
 Wojciech Jończyk
 
-wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+TO DO :
 
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+	- UML;
+	- Letters;
+	- email;
+	- cleanup and merge code;
+	- set up listener to write letters on image;
+	- seek for ml letter recognition;
+
