@@ -33,6 +33,15 @@ enum GesturesAvailable {
 
 
 class Gesture{
+private:
+  int detectGestureOneHand();
+  int detectGestureTwoHands();
+
+  Leap::HandList hands;
+  int handCount;
+  float strength[2];
+  bool leftHand;
+
 public:
 	Gesture() : handCount(0), leftHand(false) {}
 	Gesture(Leap::HandList hand);
@@ -42,15 +51,6 @@ public:
 
   //return for one and two hands
 	int getGesture();
-
-private:
-  int detectGestureOneHand();
-  int detectGestureTwoHands();
-  
-	Leap::HandList hands;
-	int handCount;
-	float strength[2];
-	bool leftHand;
 };
 
 #endif
