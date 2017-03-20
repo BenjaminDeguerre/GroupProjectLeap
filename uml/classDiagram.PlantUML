@@ -1,7 +1,57 @@
 @startuml
 
 class Gestures {
+  +Gestures()
+  +Gesture(hand)
 
+  +on()
+  +drawfingers()
+  +detectGestureOneHand()
+  +detectGestureTwoHands()
+  +getGesture()
+
+  -hands
+  -ext_fingers1
+  -ext_fingers2
+  -hand
+  -hand_count
+  -strength
+  -leftHand
+  -fing
+  -count
+}
+
+class Filter {
+  +Filter()
+
+  +filterMean()
+}
+
+class DetecctionListener {
+  +count
+  +onInit()
+  +onConnect()
+  +onDisconnect()
+  +onExit()
+	+onFrame()
+	+onFocusGained()
+	+onFocusLost()
+	+onDeviceChange()
+	+onServiceConnect()
+	+onServiceDisconnect()
+
+  -numberOfPositions
+  -rows
+  -cols
+  -historicSize
+  -rowOrigin
+  -colOrigin
+  -positions
+  -filter
+  -image
+  -initialized
+  -previous
+  -actual
 }
 
 @enduml
