@@ -8,18 +8,6 @@
 #include "Gesture.hpp"
 
 class GestControl {
-public:
-	static GestControl& getInstance();
-	static void freeInstance();
-
-	void setFrameLimit(int limit) { frameLimit = limit; }
-	int getFrameLimit() { return frameLimit; }
-
-	bool setGesture(int id);
-	void setModeCout(bool mode) { mode_cout = mode; }
-	bool getModeCout() { return mode_cout; }
-	//void validateGesture(int id);
-
 private:
 	struct Handler {
 		GestControl *instance;
@@ -36,5 +24,17 @@ private:
 	~GestControl() {};
 	//preventing using default copy constructor
 	GestControl& operator=(const GestControl& gc) {};
+
+public:
+	static GestControl& getInstance();
+	static void freeInstance();
+
+	void setFrameLimit(int limit) { frameLimit = limit; }
+	int getFrameLimit() { return frameLimit; }
+
+	bool setGesture(int id);
+	void setModeCout(bool mode) { mode_cout = mode; }
+	bool getModeCout() { return mode_cout; }
+	//void validateGesture(int id);
 };
 #endif
