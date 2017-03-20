@@ -28,7 +28,6 @@ class Filter {
 }
 
 class DetecctionListener {
-  +count
   +onInit()
   +onConnect()
   +onDisconnect()
