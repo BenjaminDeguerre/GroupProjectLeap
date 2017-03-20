@@ -6,52 +6,51 @@
 #include "Leap.h"
 #include "GestControl.hpp"
 
-#define ERROR -1
-#define MODE_1 1
-#define MODE_2 2
-#define MODE_3 3
-#define MODE_4 4
+enum GesturesAvailable {
+ ERROR = -1,
 
-#define ONE_FINGER 5
-#define TWO_FINGERS 6
-#define THREE_FINGERS 7
-#define FOUR_FINGERS 8
-#define FIVE_FINGERS 9
-#define SIX_FINGERS 10
-#define SEVEN_FINGERS 11
-#define EIGHT_FINGERS 12
-#define NINE_FINGERS 13
-#define TEN_FINGERS 14
+ ONE_FINGER,
+ TWO_FINGERS,
+ THREE_FINGERS,
+ FOUR_FINGERS,
+ FIVE_FINGERS,
+ SIX_FINGERS,
+ SEVEN_FINGERS,
+ EIGHT_FINGERS,
+ NINE_FINGERS,
+ TEN_FINGERS,
 
-#define WEAK_GRAB 15
-#define STRONG_GRAB 16
-#define GRAB_ONE_HAND 17
+ WEAK_GRAB,
+ STRONG_GRAB,
+ GRAB_ONE_HAND,
+
+ ONE_FINGER_ONE_HAND,
+ TWO_FINGERS_ONE_HAND,
+ THREE_FINGERS_ONE_HAND,
+ FOUR_FINGERS_ONE_HAND,
+ FIVE_FINGERS_ONE_HAND,
+};
+
 
 class Gesture{
 public:
-	Gesture() : hand_count(0), strength(0), leftHand(0) {}
+	Gesture() : handCount(0), leftHand(false) {}
 	Gesture(Leap::HandList hand);
 	~Gesture();
 
-	void on();
-	void drawfingers();
-
 	//Methods to recognize gestures
-	// -> define int
-	int detectGestureOneHand();
-	int detectGestureTwoHands();
+
+  //return for one and two hands
 	int getGesture();
 
 private:
+  int detectGestureOneHand();
+  int detectGestureTwoHands();
+  
 	Leap::HandList hands;
-	Leap::FingerList ext_fingers1;
-	Leap::FingerList ext_fingers2;
-	Leap::Hand hand;
-	int hand_count;
-	float* strength;
+	int handCount;
+	float strength[2];
 	bool leftHand;
-	int* fing;
-	int count;
 };
 
 #endif

@@ -18,6 +18,7 @@
 class DetectionListener : public Leap::Listener {
 public:
 	int count;
+	DetectionListener(): selectingMode(true) {}
 	virtual void onInit(const Leap::Controller&);
 	virtual void onConnect(const Leap::Controller&);
 	virtual void onDisconnect(const Leap::Controller&);
@@ -30,11 +31,11 @@ public:
 	virtual void onServiceDisconnect(const Leap::Controller&);
 
 private:
-	int numberOfPositions = 0, rows = 460, cols = 680, historicSize = 10, rowOrigin, colOrigin;
+	int numberOfPositions = 0, rows = 460, cols = 680, historicSize = 10, rowOrigin, colOrigin, mode = 0;
 	std::vector<Leap::Vector> positions;
 	Filter filter;
 	cv::Mat image = cv::Mat(rows, cols, CV_8UC1, cv::Scalar(255));
-	bool initialized = false;
+	bool initialized = false, selectingMode;
 	cv::Point previous = cv::Point(rows - 40, cols / 2), actual = cv::Point(rows - 40, cols / 2);
 };
 

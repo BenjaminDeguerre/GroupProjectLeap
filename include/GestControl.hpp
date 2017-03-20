@@ -1,5 +1,5 @@
-#ifndef GestControl_h
-#define GestControl_h
+#ifndef GESTCONTROL_HPP
+#define GESTCONTROL_HPP
 
 #include <iostream>
 #include <cstring>
@@ -16,6 +16,8 @@ public:
 	int getFrameLimit() { return frameLimit; }
 
 	bool setGesture(int id);
+	void setModeCout(bool mode) { mode_cout = mode; }
+	bool getModeCout() { return mode_cout; }
 	//void validateGesture(int id);
 
 private:
@@ -28,6 +30,7 @@ private:
 	int gestureId;
 	int count;
 	int frameLimit;
+	bool mode_cout;
 
 	GestControl() :gestureId(-1), count(0), frameLimit(60) {};
 	~GestControl() {};
