@@ -1,23 +1,34 @@
 @startuml
 
-class Gestures {
-  +Gestures()
-  +Gesture(hand)
+class Gesture {
+  {abstract} int getGesture()
+}
 
-  +on()
-  +drawfingers()
-  +detectGestureOneHand()
-  +detectGestureTwoHands()
+class StaticGesture {
+  +StaticGesture()
+  +StaticGesture(hand)
+  -detectGestureOneHand()
+  -detectGestureTwoHands()
   +getGesture()
 
   -hands
-  -ext_fingers1
-  -ext_fingers2
   -hand
-  -hand_count
+  -handCount
   -strength
   -leftHand
-  -fing
+  -count
+}
+
+class DynamicGesture {
+  +DynamicGesture()
+  +DynamicGesture(hand)
+  +getGesture()
+
+  -hands
+  -hand
+  -handCount
+  -strength
+  -leftHand
   -count
 }
 
@@ -27,7 +38,7 @@ class Filter {
   +filterMean()
 }
 
-class DetecctionListener {
+class DetectionListener {
   +onInit()
   +onConnect()
   +onDisconnect()
@@ -53,4 +64,24 @@ class DetecctionListener {
   -actual
 }
 
+class ModelHandler {
+  +setMode(int)
+  +execute(Gesture)
+}
+
+class Communicator {
+  +sendData(int*)
+}
+
+class GestValidator {
+  +isValid()
+}
+
+Gesture <|-- StaticGesture
+Gesture <|-- DynamicGesture
+ModelHandler *-- Communicator
+ModelHandler *-- Filter
+DetectionListener *-- ModelHandler
+DetectionListener *-- GestValidator
+DynamicGesture *-- Filter
 @enduml
