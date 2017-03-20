@@ -51,7 +51,7 @@ void DetectionListener::onFrame(const Leap::Controller& controller) {
 				break;
 			default:
 				//do nothing and wait for detection.
-				std::cout << "nothing to do" << '\n';
+				//std::cout << "nothing to do" << '\n';
 				break;
 		}
 	} else if (mode != 0 && selectingMode) {

@@ -17,7 +17,6 @@
 
 class DetectionListener : public Leap::Listener {
 public:
-	int count;
 	DetectionListener(): selectingMode(true) {}
 	virtual void onInit(const Leap::Controller&);
 	virtual void onConnect(const Leap::Controller&);

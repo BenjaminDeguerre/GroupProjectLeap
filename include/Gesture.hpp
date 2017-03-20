@@ -57,7 +57,6 @@ public:
 
   //return for one and two hands
 	int getGesture();
-
 };
 
 #endif
