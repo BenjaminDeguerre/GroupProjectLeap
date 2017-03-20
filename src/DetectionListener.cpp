@@ -33,6 +33,8 @@ void DetectionListener::onFrame(const Leap::Controller& controller) {
 		switch (gesture.type()) {
 		case Leap::Gesture::TYPE_SWIPE:
 			image.setTo(cv::Scalar(255));
+      cv::imshow("My image", image);
+      cv::waitKey(1000);
 			break;
 		default:
 			break;
