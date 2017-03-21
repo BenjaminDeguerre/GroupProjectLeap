@@ -1,5 +1,5 @@
-#ifndef GESTCONTROL_HPP
-#define GESTCONTROL_HPP
+#ifndef GESTVALIDATOR_HPP
+#define GESTVALIDATOR_HPP
 
 #include <iostream>
 #include <cstring>

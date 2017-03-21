@@ -1,4 +1,4 @@
-#include "GestControl.hpp"
+#include "GestValidator.hpp"
 
 
 GestControl::Handler GestControl::handler = GestControl::Handler();
@@ -10,14 +10,14 @@ GestControl& GestControl::getInstance() {
 }
 
 void GestControl::freeInstance() {
-	if (handler.instance != 0) 
+	if (handler.instance != 0)
 		delete handler.instance;
 	handler.instance = 0;
-	
+
 }
 
 bool GestControl::setGesture(int id) {
-	
+
 	if (gestureId == id)
 		count++;
 	//if we change gesture
