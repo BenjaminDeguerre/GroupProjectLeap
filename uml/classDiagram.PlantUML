@@ -75,6 +75,10 @@ class Communicator {
 
 class GestValidator {
   +isValid()
+
+  -count
+  -frameLimit
+  -currentGesture
 }
 
 Gesture <|-- StaticGesture

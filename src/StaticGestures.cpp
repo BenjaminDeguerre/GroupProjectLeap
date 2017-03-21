@@ -11,7 +11,7 @@ Gesture::Gesture(Leap::HandList hands) {
 
 Gesture::~Gesture() {}
 
-void Gesture::chooseMode() 
+void Gesture::chooseMode()
 {
 	mode = detectGestureOneHand();
 	switch (mode) {
@@ -45,9 +45,7 @@ int Gesture::getGesture() {
 		return detectGestureOneHand();
 		break;
 	case 2:
-		//return detectGestureTwoHands();
-		result = detectGestureTwoHands();
-		checkLetter(result);
+		return detectGestureTwoHands();
 		break;
 	default:
 		return ERROR;
@@ -59,20 +57,6 @@ int Gesture::detectGestureOneHand() {
 
 	if (hands.count() != 1) {
 		return ERROR;
-	}
-
-	int result = 0;
-	int num = ext_fingers1.count();
-
-	GestControl& gestcontrol = GestControl::getInstance();
-	gestcontrol.setFrameLimit(500);
-	result = gestcontrol.setGesture(num);
-
-	if (result) {
-		if (num == 1) std::cout << "Mode 1\n";
-		if (num == 2) std::cout << "Mode 2\n";
-		if (num == 3) std::cout << "Mode 3\n";
-		if (num == 4) std::cout << "Mode 4\n";
 	}
 
 	int extendedFingersHand =  hands[0].fingers().extended().count();
@@ -110,12 +94,12 @@ int Gesture::detectGestureTwoHands() {
 
 	GestControl& gestcontrol = GestControl::getInstance();
 	gestcontrol.setFrameLimit(100);
-	
+
 	int result, num;
 	int fingersNumber, extendedFingersHand1, extendedFingersHand2;
 	float grabAngle1 = hands[0].grabAngle(), grabAngle2 = hands[1].grabAngle();
 
-	//if (hands[0].isLeft() == false) 
+	//if (hands[0].isLeft() == false)
 	//{
 	//	Leap::Hand term = hands[0];
 	//	hands[0] = hands[1];
@@ -129,7 +113,7 @@ int Gesture::detectGestureTwoHands() {
 	extendedFingersHand2 = hands[1].fingers().extended().count();
 
 	fingersNumber = extendedFingersHand1 + extendedFingersHand2;
-	
+
 	//num = 5*extendedFingersHand1 + extendedFingersHand2;
 
 	result = gestcontrol.setGesture(fingersNumber);
@@ -171,21 +155,6 @@ int Gesture::detectGestureTwoHands() {
 
 	if (strength[0] < 0.5 && strength[1] < 0.5) return WEAK_GRAB;
 	if (grabAngle1 > 1.5 && grabAngle2 > 1.5) return STRONG_GRAB;
-	
 
 	return ERROR;
-}
-
-void Gesture::checkLetter(int num) 
-{
-
-	if (num == 27) std::cout << ".";
-	if (num == 28) std::cout << " ";
-	if (num > 0 && num < 27)
-	{
-		char k = num + 96;
-		//std::cout << k << std::endl;
-		std::cout << k;
-	}
-	
 }

@@ -5,36 +5,39 @@
 #include <cstring>
 
 #include "Leap.h"
-#include "Gesture.hpp"
+#include "StaticGesture.hpp"
 
-class GestControl {
+class GestVlidator {
 private:
-	struct Handler {
-		GestControl *instance;
-		Handler() :instance(0) {};
-		~Handler() { if (instance) delete instance; }
-	};
-	static Handler handler;
-	int gestureId;
+	// struct Handler {
+	// 	GestControl *instance;
+	// 	Handler() :instance(0) {};
+	// 	~Handler() { if (instance) delete instance; }
+	// };
+	// static Handler handler;
+	int currentGesture;
 	int count;
 	int frameLimit;
-	bool mode_cout;
 
-	GestControl() :gestureId(-1), count(0), frameLimit(60) {};
-	~GestControl() {};
+	StaticGesture currentGesture;
+	//bool mode_cout;
+
 	//preventing using default copy constructor
 	GestControl& operator=(const GestControl& gc) {};
 
 public:
-	static GestControl& getInstance();
-	static void freeInstance();
+	// static GestControl& getInstance();
+	// static void freeInstance();
 
-	void setFrameLimit(int limit) { frameLimit = limit; }
-	int getFrameLimit() { return frameLimit; }
+	GestControl() :currentGesture(-1), count(0), frameLimit(10) {};
+	~GestControl() {};
 
-	bool setGesture(int id);
-	void setModeCout(bool mode) { mode_cout = mode; }
-	bool getModeCout() { return mode_cout; }
+	void setFrameLimit(int limit);
+	int getFrameLimit();
+	void setGesture(StaticGesture gesture);
+	bool isValid(StaticGesture gesture)
+	// void setModeCout(bool mode) { mode_cout = mode; }
+	// bool getModeCout() { return mode_cout; }
 	//void validateGesture(int id);
 };
 #endif

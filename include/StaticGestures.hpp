@@ -3,13 +3,14 @@
 
 #include <iostream>
 #include <cstring>
+
 #include "Leap.h"
 #include "GestControl.hpp"
 
-enum GesturesAvailable {
+enum StaticGesture {
  ERROR = -1,
+ ONE_FINGER = 1,
 
- ONE_FINGER,
  TWO_FINGERS,
  THREE_FINGERS,
  FOUR_FINGERS,
@@ -36,7 +37,7 @@ class Gesture{
 private:
   	int detectGestureOneHand();
   	int detectGestureTwoHands();
-  
+
 	Leap::HandList hands;
 	int handCount;
 	Leap::FingerList ext_fingers1;

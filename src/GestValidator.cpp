@@ -1,28 +1,41 @@
 #include "GestValidator.hpp"
 
 
-GestControl::Handler GestControl::handler = GestControl::Handler();
+// GestControl::Handler GestControl::handler = GestControl::Handler();
+//
+// GestControl& GestControl::getInstance() {
+// 	if (handler.instance == 0)
+// 		handler.instance = new GestControl();
+// 	return *handler.instance;
+// }
+//
+// void GestControl::freeInstance() {
+// 	if (handler.instance != 0)
+// 		delete handler.instance;
+// 	handler.instance = 0;
+//
+// }
 
-GestControl& GestControl::getInstance() {
-	if (handler.instance == 0)
-		handler.instance = new GestControl();
-	return *handler.instance;
+void setFrameLimit(int limit) {
+	frameLimit = limit;
 }
 
-void GestControl::freeInstance() {
-	if (handler.instance != 0)
-		delete handler.instance;
-	handler.instance = 0;
-
+int getFrameLimit() {
+	return frameLimit;
 }
 
-bool GestControl::setGesture(int id) {
+bool GestControl::setGesture(StaticGesture gesture) {
+	currentGesture = gesture;
+}
 
-	if (gestureId == id)
+void GestControl::isValid(StaticGesture gesture){
+
+	if (currentGesture == gesture) {
 		count++;
-	//if we change gesture
-	else
+	} else {
+		//if we change gesture
 		count = 1;
+	}
 
 	gestureId = id;
 
@@ -35,8 +48,3 @@ bool GestControl::setGesture(int id) {
 
 	return false;
 }
-
-/*void GestControl::validateGesture(int id){
-
-	std::cout << id << std::endl;
-}*/
