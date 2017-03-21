@@ -1,11 +1,11 @@
 #include "ModeHandler.hpp"
 
 bool ModeHandler::mode1() {
-  /* code */
+  return false;
 }
 
 bool ModeHandler::mode2() {
-  /* code */
+  return false;
 }
 
 bool ModeHandler::mode3(const StaticGesture gesture, const Leap::GestureList gestures, const Leap::FingerList fingers) {
@@ -61,8 +61,9 @@ bool ModeHandler::mode3(const StaticGesture gesture, const Leap::GestureList ges
   		line(image, previous, actual, cv::Scalar(0, 0, 0), 5);
   	}
   }
+  return true;
 }
 
 bool ModeHandler::mode4() {
-  /* code */
+  return false;
 }

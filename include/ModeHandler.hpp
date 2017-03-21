@@ -1,6 +1,8 @@
 #ifndef MODE_HANDLER_HPP
 #define MODE_HANDLER_HPP
 
+#define _CRT_SECURE_NO_DEPRECATE
+
 #include <iostream>
 #include <cstring>
 
