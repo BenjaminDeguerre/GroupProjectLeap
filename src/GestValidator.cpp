@@ -16,19 +16,19 @@
 //
 // }
 
-void setFrameLimit(int limit) {
+void GestValidator::setFrameLimit(int limit) {
 	frameLimit = limit;
 }
 
-int getFrameLimit() {
+int GestValidator::getFrameLimit() {
 	return frameLimit;
 }
 
-bool GestControl::setGesture(StaticGesture gesture) {
+void GestValidator::setGesture(StaticGesture gesture) {
 	currentGesture = gesture;
 }
 
-void GestControl::isValid(StaticGesture gesture){
+bool GestValidator::isValid(StaticGesture gesture){
 
 	if (currentGesture == gesture) {
 		count++;
@@ -37,7 +37,7 @@ void GestControl::isValid(StaticGesture gesture){
 		count = 1;
 	}
 
-	gestureId = id;
+	currentGesture = gesture;
 
 	//Call controller on the count
 	if (count == frameLimit) {

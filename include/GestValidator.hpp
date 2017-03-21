@@ -5,9 +5,9 @@
 #include <cstring>
 
 #include "Leap.h"
-#include "StaticGesture.hpp"
+#include "StaticGestures.hpp"
 
-class GestVlidator {
+class GestValidator {
 private:
 	// struct Handler {
 	// 	GestControl *instance;
@@ -15,7 +15,6 @@ private:
 	// 	~Handler() { if (instance) delete instance; }
 	// };
 	// static Handler handler;
-	int currentGesture;
 	int count;
 	int frameLimit;
 
@@ -23,19 +22,19 @@ private:
 	//bool mode_cout;
 
 	//preventing using default copy constructor
-	GestControl& operator=(const GestControl& gc) {};
+	//GestControl& operator=(const GestControl& gc) {};
 
 public:
 	// static GestControl& getInstance();
 	// static void freeInstance();
 
-	GestControl() :currentGesture(-1), count(0), frameLimit(10) {};
-	~GestControl() {};
+	GestValidator() :currentGesture(ERROR), count(0), frameLimit(10) {};
+	~GestValidator() {};
 
 	void setFrameLimit(int limit);
 	int getFrameLimit();
 	void setGesture(StaticGesture gesture);
-	bool isValid(StaticGesture gesture)
+  bool isValid(StaticGesture gesture);
 	// void setModeCout(bool mode) { mode_cout = mode; }
 	// bool getModeCout() { return mode_cout; }
 	//void validateGesture(int id);

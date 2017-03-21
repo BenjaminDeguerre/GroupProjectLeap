@@ -1,6 +1,6 @@
-#include "Gesture.hpp"
+#include "StaticGestures.hpp"
 
-Gesture::Gesture(Leap::HandList hands) {
+StaticGestures::StaticGestures(Leap::HandList hands) {
 	this->hands = hands;
 	handCount = hands.count();
 	if (handCount == 1) {
@@ -9,37 +9,9 @@ Gesture::Gesture(Leap::HandList hands) {
 	}
 }
 
-Gesture::~Gesture() {}
+StaticGestures::~StaticGestures() {}
 
-void Gesture::chooseMode()
-{
-	mode = detectGestureOneHand();
-	switch (mode) {
-	case 1:
-		return mode1();
-		break;
-
-	case 2:
-		return mode2();
-		break;
-
-	case 3:
-		return mode3();
-		break;
-
-	case 4:
-		return mode4();
-		break;
-
-	default:
-		return ERROR;
-		break;
-	}
-}
-
-int Gesture::getGesture() {
-	int result;
-
+StaticGesture StaticGestures::getGesture() {
 	switch (handCount) {
 	case 1:
 		return detectGestureOneHand();
@@ -53,7 +25,7 @@ int Gesture::getGesture() {
 	}
 }
 
-int Gesture::detectGestureOneHand() {
+StaticGesture StaticGestures::detectGestureOneHand() {
 
 	if (hands.count() != 1) {
 		return ERROR;
@@ -86,17 +58,17 @@ int Gesture::detectGestureOneHand() {
 		}
 }
 
-int Gesture::detectGestureTwoHands() {
+StaticGesture StaticGestures::detectGestureTwoHands() {
 
 	if (hands.count() >= 3) {
 		return ERROR;
 	}
 
-	GestControl& gestcontrol = GestControl::getInstance();
-	gestcontrol.setFrameLimit(100);
+	// GestControl& gestcontrol = GestControl::getInstance();
+	// gestcontrol.setFrameLimit(100);
 
-	int result, num;
-	int fingersNumber, extendedFingersHand1, extendedFingersHand2;
+	int result;
+	int extendedFingersHand1, extendedFingersHand2;
 	float grabAngle1 = hands[0].grabAngle(), grabAngle2 = hands[1].grabAngle();
 
 	//if (hands[0].isLeft() == false)
@@ -112,11 +84,11 @@ int Gesture::detectGestureTwoHands() {
 	extendedFingersHand1 = hands[0].fingers().extended().count();
 	extendedFingersHand2 = hands[1].fingers().extended().count();
 
-	fingersNumber = extendedFingersHand1 + extendedFingersHand2;
+	result = extendedFingersHand1 + extendedFingersHand2;
 
 	//num = 5*extendedFingersHand1 + extendedFingersHand2;
 
-	result = gestcontrol.setGesture(fingersNumber);
+	//result = gestcontrol.setGesture(fingersNumber);
 
 	switch (result) {
 		case 1:

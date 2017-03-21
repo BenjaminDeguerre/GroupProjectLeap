@@ -1,11 +1,10 @@
-#ifndef GESTURE_HPP
-#define GESTURE_HPP
+#ifndef STATIC_GESTURE_HPP
+#define STATIC_GESTURE_HPP
 
 #include <iostream>
 #include <cstring>
 
 #include "Leap.h"
-#include "GestControl.hpp"
 
 enum StaticGesture {
  ERROR = -1,
@@ -33,10 +32,11 @@ enum StaticGesture {
 };
 
 
-class Gesture{
+class StaticGestures {
 private:
-  	int detectGestureOneHand();
-  	int detectGestureTwoHands();
+
+  StaticGesture detectGestureOneHand();
+	StaticGesture detectGestureTwoHands();
 
 	Leap::HandList hands;
 	int handCount;
@@ -46,18 +46,14 @@ private:
 	float strength[2];
 	bool leftHand;
 	int count;
-	int mode;
-public:
-	Gesture() : handCount(0), leftHand(false) {}
-	Gesture(Leap::HandList hand);
-	~Gesture();
 
-	//void on();
-	//void chooseMode();
-	void checkLetter(int num);
+public:
+	StaticGestures() : handCount(0), leftHand(false) {}
+	StaticGestures(Leap::HandList hands);
+	~StaticGestures();
 
   //return for one and two hands
-	int getGesture();
+	StaticGesture getGesture();
 };
 
 #endif
