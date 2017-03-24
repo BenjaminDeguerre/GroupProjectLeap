@@ -8,20 +8,7 @@
 
 enum StaticGesture {
  ERROR = -1,
- ONE_FINGER = 1,
 
- TWO_FINGERS,
- THREE_FINGERS,
- FOUR_FINGERS,
- FIVE_FINGERS,
- SIX_FINGERS,
- SEVEN_FINGERS,
- EIGHT_FINGERS,
- NINE_FINGERS,
- TEN_FINGERS,
-
- WEAK_GRAB,
- STRONG_GRAB,
  GRAB_ONE_HAND,
 
  ONE_FINGER_ONE_HAND,
@@ -29,13 +16,50 @@ enum StaticGesture {
  THREE_FINGERS_ONE_HAND,
  FOUR_FINGERS_ONE_HAND,
  FIVE_FINGERS_ONE_HAND,
+
+ // LEFT_ONE_RIGHT_ONE - left hand one finger, right hand one finger
+	LEFT_ZERO_RIGHT_ONE,
+	LEFT_ZERO_RIGHT_TWO,
+	LEFT_ZERO_RIGHT_THREE,
+	LEFT_ZERO_RIGHT_FOUR,
+	LEFT_ZERO_RIGHT_FIVE,
+
+	LEFT_ONE_RIGHT_ONE,
+	LEFT_ONE_RIGHT_TWO,
+	LEFT_ONE_RIGHT_THREE,
+	LEFT_ONE_RIGHT_FOUR,
+	LEFT_ONE_RIGHT_FIVE,
+
+	LEFT_TWO_RIGHT_ONE,
+	LEFT_TWO_RIGHT_TWO,
+	LEFT_TWO_RIGHT_THREE,
+	LEFT_TWO_RIGHT_FOUR,
+	LEFT_TWO_RIGHT_FIVE,
+
+	LEFT_THREE_RIGHT_ONE,
+	LEFT_THREE_RIGHT_TWO,
+	LEFT_THREE_RIGHT_THREE,
+	LEFT_THREE_RIGHT_FOUR,
+	LEFT_THREE_RIGHT_FIVE,
+
+	LEFT_FOUR_RIGHT_ONE,
+	LEFT_FOUR_RIGHT_TWO,
+	LEFT_FOUR_RIGHT_THREE,
+	LEFT_FOUR_RIGHT_FOUR,
+	LEFT_FOUR_RIGHT_FIVE,
+	
+	LEFT_FIVE_RIGHT_ONE,
+	LEFT_FIVE_RIGHT_TWO,
+	LEFT_FIVE_RIGHT_THREE,
+
+	CANCEL, // if both hands are open
 };
 
 
 class StaticGestures {
 private:
 
-  StaticGesture detectGestureOneHand();
+    StaticGesture detectGestureOneHand();
 	StaticGesture detectGestureTwoHands();
 
 	Leap::HandList hands;
@@ -45,7 +69,7 @@ private:
 	Leap::Hand hand;
 	float strength[2];
 	bool leftHand;
-	int count;
+	int countFingers;
 
 public:
 	StaticGestures() : handCount(0), leftHand(false) {}

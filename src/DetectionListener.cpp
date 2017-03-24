@@ -67,7 +67,8 @@ void DetectionListener::onFrame(const Leap::Controller& controller) {
 		} else {
 			switch (mode) {
 				case 1:
-        selectingMode = !handler.mode1();
+					validator.setFrameLimit(100);
+        selectingMode = !handler.mode1(sGesture);
 				break;
 				case 2:
 				selectingMode = !handler.mode2();

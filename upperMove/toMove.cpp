@@ -21,15 +21,15 @@ void gesture::chooseMode()
 	}
 }
 
-void Gesture::checkLetter(int num) {
-
-	if (num == 27) std::cout << ".";
-	if (num == 28) std::cout << " ";
-	if (num > 0 && num < 27)
-	{
-		char k = num + 96;
-		//std::cout << k << std::endl;
-		std::cout << k;
-	}
-
-}
+//void Gesture::checkLetter(int num) {
+//
+//	if (num == 27) std::cout << ".";
+//	if (num == 28) std::cout << " ";
+//	if (num > 0 && num < 27)
+//	{
+//		char k = num + 96;
+//		//std::cout << k << std::endl;
+//		std::cout << k;
+//	}
+//
+//}

@@ -60,73 +60,111 @@ StaticGesture StaticGestures::detectGestureOneHand() {
 
 StaticGesture StaticGestures::detectGestureTwoHands() {
 
-	if (hands.count() >= 3) {
-		return ERROR;
+	if (hands.count() >= 3) return ERROR;
+
+	int result, extendedFingersHand1, extendedFingersHand2;
+	
+	if (hands[0].isLeft() == false)
+	{
+		Leap::Hand term = hands[0];
+		hands[0] = hands[1];
+		hands[1] = term;
 	}
-
-	// GestControl& gestcontrol = GestControl::getInstance();
-	// gestcontrol.setFrameLimit(100);
-
-	int result;
-	int extendedFingersHand1, extendedFingersHand2;
-	float grabAngle1 = hands[0].grabAngle(), grabAngle2 = hands[1].grabAngle();
-
-	//if (hands[0].isLeft() == false)
-	//{
-	//	Leap::Hand term = hands[0];
-	//	hands[0] = hands[1];
-	//	hands[1] = term;
-	//}
-
-	strength[0] = hands[0].grabStrength();
-	strength[1] = hands[1].grabStrength();
 
 	extendedFingersHand1 = hands[0].fingers().extended().count();
 	extendedFingersHand2 = hands[1].fingers().extended().count();
 
-	result = extendedFingersHand1 + extendedFingersHand2;
-
-	//num = 5*extendedFingersHand1 + extendedFingersHand2;
-
-	//result = gestcontrol.setGesture(fingersNumber);
-
+	countFingers = 5*extendedFingersHand1 + extendedFingersHand2;
 	switch (result) {
-		case 1:
-			return ONE_FINGER;
-			break;
-		case 2:
-			return TWO_FINGERS;
-			break;
-		case 3:
-			return THREE_FINGERS;
-			break;
-		case 4:
-			return FOUR_FINGERS;
-			break;
-		case 5:
-			return FIVE_FINGERS;
-			break;
-		case 6:
-			return SIX_FINGERS;
-			break;
-		case 7:
-			return SEVEN_FINGERS;
-			break;
-		case 8:
-			return EIGHT_FINGERS;
-			break;
-		case 9:
-			return NINE_FINGERS;
-			break;
-		case 10:
-			return TEN_FINGERS;
-			break;
-		default://do nothing to not return an error before the other checks.
-			break;
+	case 1:
+		return LEFT_ZERO_RIGHT_ONE;
+		break;
+	case 2:
+		return LEFT_ZERO_RIGHT_TWO;
+		break;
+	case 3:
+		return LEFT_ZERO_RIGHT_THREE;
+		break;
+	case 4:
+		return LEFT_ZERO_RIGHT_FOUR;
+		break;
+	case 5:
+		return LEFT_ZERO_RIGHT_FIVE;
+		break;
+	case 6:
+		return LEFT_ONE_RIGHT_ONE;
+		break;
+	case 7:
+		return LEFT_ONE_RIGHT_TWO;
+		break;
+	case 8:
+		return LEFT_ONE_RIGHT_THREE;
+		break;
+	case 9:
+		return LEFT_ONE_RIGHT_FOUR;
+		break;
+	case 10:
+		return LEFT_ONE_RIGHT_FIVE;
+		break;
+	case 11:
+		return LEFT_TWO_RIGHT_ONE;
+		break;
+	case 12:
+		return LEFT_TWO_RIGHT_TWO;
+		break;
+	case 13:
+		return LEFT_TWO_RIGHT_THREE;
+		break;
+	case 14:
+		return LEFT_TWO_RIGHT_FOUR;
+		break;
+	case 15:
+		return LEFT_TWO_RIGHT_FIVE;
+		break;
+	case 16:
+		return LEFT_THREE_RIGHT_ONE;
+		break;
+	case 17:
+		return LEFT_THREE_RIGHT_TWO;
+		break;
+	case 18:
+		return LEFT_THREE_RIGHT_THREE;
+		break;
+	case 19:
+		return LEFT_THREE_RIGHT_FOUR;
+		break;
+	case 20:
+		return LEFT_THREE_RIGHT_FIVE;
+		break;
+	case 21:
+		return LEFT_FOUR_RIGHT_ONE;
+		break;
+	case 22:
+		return LEFT_FOUR_RIGHT_TWO;
+		break;
+	case 23:
+		return LEFT_FOUR_RIGHT_THREE;
+		break;
+	case 24:
+		return LEFT_FOUR_RIGHT_FOUR;
+		break;
+	case 25:
+		return LEFT_FOUR_RIGHT_FIVE;
+		break;
+	case 26:
+		return LEFT_FIVE_RIGHT_ONE;
+		break;
+	case 27:
+		return LEFT_FIVE_RIGHT_TWO;
+		break;
+	case 28:
+		return LEFT_FIVE_RIGHT_THREE;
+		break;
+	case 30:
+		return CANCEL;
+		break;
+	default:
+		return ERROR;
+		break;
 	}
-
-	if (strength[0] < 0.5 && strength[1] < 0.5) return WEAK_GRAB;
-	if (grabAngle1 > 1.5 && grabAngle2 > 1.5) return STRONG_GRAB;
-
-	return ERROR;
 }

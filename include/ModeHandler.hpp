@@ -7,7 +7,7 @@
 #include <cstring>
 
 #include <opencv2/core/core.hpp>
-#include <opencv2/imgcodecs.hpp>
+//#include <opencv2/imgcodecs.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -26,7 +26,7 @@ private:
 	cv::Point previous = cv::Point(rows - 40, cols / 2), actual = cv::Point(rows - 40, cols / 2);
 
 public:
-	bool mode1();
+  bool mode1(const StaticGesture gesture);
   bool mode2();
   bool mode3(const StaticGesture gesture, const Leap::GestureList gestures, const Leap::FingerList fingers);
   bool mode4();

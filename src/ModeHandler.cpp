@@ -1,6 +1,97 @@
 #include "ModeHandler.hpp"
 
-bool ModeHandler::mode1() {
+bool ModeHandler::mode1(const StaticGesture gesture) {
+	switch (gesture)
+	{
+		case CANCEL:
+			break;
+		case LEFT_ZERO_RIGHT_ONE: 
+			std::cout << "a";
+			break;
+		case LEFT_ZERO_RIGHT_TWO: 
+			std::cout << "b";
+			break;
+		case LEFT_ZERO_RIGHT_THREE: 
+			std::cout << "c";
+			break;
+		case LEFT_ZERO_RIGHT_FOUR: 
+			std::cout << "d";
+			break;
+		case LEFT_ZERO_RIGHT_FIVE: 
+			std::cout << "e";
+			break;
+		case LEFT_ONE_RIGHT_ONE:
+			std::cout << "f";
+			break;
+		case LEFT_ONE_RIGHT_TWO:
+			std::cout << "g";
+			break;
+		case LEFT_ONE_RIGHT_THREE:
+			std::cout << "h";
+			break;
+		case LEFT_ONE_RIGHT_FOUR:
+			std::cout << "i";
+			break;
+		case LEFT_ONE_RIGHT_FIVE:
+			std::cout << "j";
+			break;
+		case LEFT_TWO_RIGHT_ONE:
+			std::cout << "k";
+			break;
+		case LEFT_TWO_RIGHT_TWO:
+			std::cout << "l";
+			break;
+		case LEFT_TWO_RIGHT_THREE:
+			std::cout << "m";
+			break;
+		case LEFT_TWO_RIGHT_FOUR:
+			std::cout << "n";
+			break;
+		case LEFT_TWO_RIGHT_FIVE:
+			std::cout << "o";
+			break;
+		case LEFT_THREE_RIGHT_ONE:
+			std::cout << "p";
+			break;
+		case LEFT_THREE_RIGHT_TWO:
+			std::cout << "q";
+			break;
+		case LEFT_THREE_RIGHT_THREE:
+			std::cout << "r";
+			break;
+		case LEFT_THREE_RIGHT_FOUR:
+			std::cout << "s";
+			break;
+		case LEFT_THREE_RIGHT_FIVE:
+			std::cout << "t";
+			break;
+		case LEFT_FOUR_RIGHT_ONE:
+			std::cout << "u";
+			break;
+		case LEFT_FOUR_RIGHT_TWO:
+			std::cout << "v";
+			break;
+		case LEFT_FOUR_RIGHT_THREE:
+			std::cout << "w";
+			break;
+		case LEFT_FOUR_RIGHT_FOUR:
+			std::cout << "x";
+			break;
+		case LEFT_FOUR_RIGHT_FIVE:
+			std::cout << "y";
+			break;
+		case LEFT_FIVE_RIGHT_ONE:
+			std::cout << "z";
+			break;
+		case LEFT_FIVE_RIGHT_TWO:
+			std::cout << ".";
+			break;
+		case LEFT_FIVE_RIGHT_THREE:
+			std::cout << " ";
+			break;
+		default:
+			break;
+	}
   return false;
 }
 
@@ -11,7 +102,7 @@ bool ModeHandler::mode2() {
 bool ModeHandler::mode3(const StaticGesture gesture, const Leap::GestureList gestures, const Leap::FingerList fingers) {
 
   //Switching mode if ten fingers
-  if (gesture == TEN_FINGERS) {
+  if (gesture == CANCEL) {
     cv::destroyWindow("My image");
     return false;
   }
