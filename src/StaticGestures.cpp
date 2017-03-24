@@ -3,10 +3,6 @@
 StaticGestures::StaticGestures(Leap::HandList hands) {
 	this->hands = hands;
 	handCount = hands.count();
-	if (handCount == 1) {
-		leftHand = hands[0].isLeft();
-		hand = hands[0];
-	}
 }
 
 StaticGestures::~StaticGestures() {}
@@ -28,44 +24,72 @@ StaticGesture StaticGestures::getGesture() {
 StaticGesture StaticGestures::detectGestureOneHand() {
 
 	if (hands.count() != 1) {
+		//Should never go through here
 		return ERROR;
 	}
 
+	bool isLeft = hands[0].isLeft();
 	int extendedFingersHand =  hands[0].fingers().extended().count();
 
-	switch (extendedFingersHand) {
-		case 0:
+	if (isLeft) {
+		switch (extendedFingersHand) {
+			case 0:
 			return GRAB_ONE_HAND;
 			break;
-		case 1:
-			return ONE_FINGER_ONE_HAND;
+			case 1:
+			return ONE_FINGER_LEFT_HAND;
 			break;
-		case 2:
-			return TWO_FINGERS_ONE_HAND;
+			case 2:
+			return TWO_FINGERS_LEFT_HAND;
 			break;
-		case 3:
-			return THREE_FINGERS_ONE_HAND;
+			case 3:
+			return THREE_FINGERS_LEFT_HAND;
 			break;
-		case 4:
-			return FOUR_FINGERS_ONE_HAND;
+			case 4:
+			return FOUR_FINGERS_LEFT_HAND;
 			break;
-		case 5:
-			return FIVE_FINGERS_ONE_HAND;
+			case 5:
+			return FIVE_FINGERS_LEFT_HAND;
 			break;
-		default:
+			default:
 			return ERROR;
 			break;
 		}
+	} else {
+		switch (extendedFingersHand) {
+			case 0:
+			return GRAB_ONE_HAND;
+			break;
+			case 1:
+			return ONE_FINGER_RIGHT_HAND;
+			break;
+			case 2:
+			return TWO_FINGERS_RIGHT_HAND;
+			break;
+			case 3:
+			return THREE_FINGERS_RIGHT_HAND;
+			break;
+			case 4:
+			return FOUR_FINGERS_RIGHT_HAND;
+			break;
+			case 5:
+			return FIVE_FINGERS_RIGHT_HAND;
+			break;
+			default:
+			return ERROR;
+			break;
+		}
+	}
 }
 
 StaticGesture StaticGestures::detectGestureTwoHands() {
 
-	if (hands.count() >= 3) return ERROR;
+	if (hands.count() >= 3 || (hands.count() == 2 && hands[0].isLeft() && hands[1].isLeft())) return ERROR;
 
-	int result, extendedFingersHand1, extendedFingersHand2;
-	
-	if (hands[0].isLeft() == false)
-	{
+	int extendedFingersHand1, extendedFingersHand2, countFingers;
+
+	//putting left hand to the zero position
+	if (!hands[0].isLeft()) {
 		Leap::Hand term = hands[0];
 		hands[0] = hands[1];
 		hands[1] = term;
@@ -74,8 +98,36 @@ StaticGesture StaticGestures::detectGestureTwoHands() {
 	extendedFingersHand1 = hands[0].fingers().extended().count();
 	extendedFingersHand2 = hands[1].fingers().extended().count();
 
+	//avoiding possible mixing in detections
+	if (extendedFingersHand2 == 0) {
+		switch (extendedFingersHand1) {
+			case 0:
+				return LEFT_ZERO_RIGHT_ZERO;
+				break;
+			case 1:
+				return LEFT_ONE_RIGHT_ZERO;
+				break;
+			case 2:
+				return LEFT_TWO_RIGHT_ZERO;
+				break;
+			case 3:
+				return LEFT_THREE_RIGHT_ZERO;
+				break;
+			case 4:
+				return LEFT_FOUR_RIGHT_ZERO;
+				break;
+			case 5:
+				return LEFT_FIVE_RIGHT_ZERO;
+				break;
+			default:
+				return ERROR;
+				break;
+		}
+	}
+
 	countFingers = 5*extendedFingersHand1 + extendedFingersHand2;
-	switch (result) {
+
+	switch (countFingers) {
 	case 1:
 		return LEFT_ZERO_RIGHT_ONE;
 		break;
@@ -160,8 +212,11 @@ StaticGesture StaticGestures::detectGestureTwoHands() {
 	case 28:
 		return LEFT_FIVE_RIGHT_THREE;
 		break;
+	case 29:
+		return LEFT_FIVE_RIGHT_FOUR;
+		break;
 	case 30:
-		return CANCEL;
+		return LEFT_FIVE_RIGHT_FIVE;
 		break;
 	default:
 		return ERROR;

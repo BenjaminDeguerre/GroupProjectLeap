@@ -3,21 +3,25 @@
 bool ModeHandler::mode1(const StaticGesture gesture) {
 	switch (gesture)
 	{
-		case CANCEL:
+		case LEFT_ZERO_RIGHT_ZERO:
+			std::cout << "Cancel";
 			break;
-		case LEFT_ZERO_RIGHT_ONE: 
+		case LEFT_FIVE_RIGHT_FIVE:
+			std::cout << "Accept";
+			break;
+		case LEFT_ZERO_RIGHT_ONE:
 			std::cout << "a";
 			break;
-		case LEFT_ZERO_RIGHT_TWO: 
+		case LEFT_ZERO_RIGHT_TWO:
 			std::cout << "b";
 			break;
-		case LEFT_ZERO_RIGHT_THREE: 
+		case LEFT_ZERO_RIGHT_THREE:
 			std::cout << "c";
 			break;
-		case LEFT_ZERO_RIGHT_FOUR: 
+		case LEFT_ZERO_RIGHT_FOUR:
 			std::cout << "d";
 			break;
-		case LEFT_ZERO_RIGHT_FIVE: 
+		case LEFT_ZERO_RIGHT_FIVE:
 			std::cout << "e";
 			break;
 		case LEFT_ONE_RIGHT_ONE:
@@ -89,10 +93,12 @@ bool ModeHandler::mode1(const StaticGesture gesture) {
 		case LEFT_FIVE_RIGHT_THREE:
 			std::cout << " ";
 			break;
+		case FIVE_FINGERS_LEFT_HAND:
+			return false;
 		default:
 			break;
 	}
-  return false;
+  return true;
 }
 
 bool ModeHandler::mode2() {
@@ -102,7 +108,7 @@ bool ModeHandler::mode2() {
 bool ModeHandler::mode3(const StaticGesture gesture, const Leap::GestureList gestures, const Leap::FingerList fingers) {
 
   //Switching mode if ten fingers
-  if (gesture == CANCEL) {
+  if (gesture == LEFT_ZERO_RIGHT_ZERO) {
     cv::destroyWindow("My image");
     return false;
   }

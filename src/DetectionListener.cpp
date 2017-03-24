@@ -30,22 +30,22 @@ void DetectionListener::onFrame(const Leap::Controller& controller) {
 	if (validator.isValid(sGesture) ){
 		if (mode == 0) {
 			switch (sGesture) {
-				case ONE_FINGER_ONE_HAND:
+				case ONE_FINGER_RIGHT_HAND:
 				//mode 1 - select text and print it on the screen
 				std::cout << "selecting mode 1" << '\n';
 				mode = 1;
 				break;
-				case TWO_FINGERS_ONE_HAND:
+				case TWO_FINGERS_RIGHT_HAND:
 				//mode 2 - writing with gestures
 				std::cout << "selecting mode 2" << '\n';
 				mode = 2;
 				break;
-				case THREE_FINGERS_ONE_HAND:
+				case THREE_FINGERS_RIGHT_HAND:
 				//mode 3 - drawing by finger
 				std::cout << "selecting mode 3" << '\n';
 				mode = 3;
 				break;
-				case FOUR_FINGERS_ONE_HAND:
+				case FOUR_FINGERS_RIGHT_HAND:
 				//mode 4 - moving the robot
 				std::cout << "selecting mode 4" << '\n';
 				mode = 4;
@@ -59,7 +59,7 @@ void DetectionListener::onFrame(const Leap::Controller& controller) {
 			if (sGesture == GRAB_ONE_HAND) {
 				std::cout << "Activating selected mode" << '\n';
 				selectingMode = false;
-			} else if (sGesture == FIVE_FINGERS_ONE_HAND) {
+			} else if (sGesture == FIVE_FINGERS_RIGHT_HAND) {
 				std::cout << "New selection" << '\n';
 				mode = 0;
 			}
@@ -67,7 +67,6 @@ void DetectionListener::onFrame(const Leap::Controller& controller) {
 		} else {
 			switch (mode) {
 				case 1:
-					validator.setFrameLimit(100);
         selectingMode = !handler.mode1(sGesture);
 				break;
 				case 2:

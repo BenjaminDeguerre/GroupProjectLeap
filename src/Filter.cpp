@@ -14,17 +14,3 @@ Leap::Vector Filter::filterMean(std::vector<Leap::Vector> positions){
   }
   return Leap::Vector(x/size, y/size, z/size);
 }
-
-//Leap::Vector Filter::filterMeanFinger(std::vector<Leap::Finger> fingers) {
-//	float x = 0, y = 0, z = 0;
-//
-//	for (int i = 0; i < fingers.size(); i++) {
-//		x += fingers[i].tipPosition().x;
-//		y += fingers[i].tipPosition().y;
-//		z += fingers[i].tipPosition().z;
-//	}
-//	if (fingers.size() == 0) {
-//		return Leap::Vector(50,50, 50);
-//	}
-//	return Leap::Vector(x / fingers.size(), y / fingers.size(), z / fingers.size());
-//}
