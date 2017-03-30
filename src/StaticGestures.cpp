@@ -89,7 +89,7 @@ StaticGesture StaticGestures::detectGestureTwoHands() {
 	int extendedFingersHand1, extendedFingersHand2, countFingers;
 
 	//putting left hand to the zero position
-
+	//the previous method wasn't working
 	if (hands[0].isLeft()) {
 		extendedFingersHand1 = hands[0].fingers().extended().count();
 		extendedFingersHand2 = hands[1].fingers().extended().count();
