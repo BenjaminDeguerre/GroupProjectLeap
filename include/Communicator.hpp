@@ -1,5 +1,6 @@
 #include <winsock2.h>
 #include <string>
+#pragma comment(lib, "Ws2_32.lib")
 
 class Communicator {
 private:
@@ -13,5 +14,5 @@ private:
 public:
   Communicator();
   ~Communicator();
-  int sendData(string data);
-}
+  int sendData(char *data);
+};

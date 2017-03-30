@@ -54,7 +54,7 @@ void DetectionListener::onFrame(const Leap::Controller& controller) {
 				//do nothing and wait for detection.
 				break;
 			}
-			validator.setGesture(ERROR); //setting to new gesture
+			validator.setGesture(ERROR_SG); //setting to new gesture
 		} else if (mode != 0 && selectingMode) {
 			if (sGesture == GRAB_ONE_HAND) {
 				std::cout << "Activating selected mode" << '\n';
@@ -63,7 +63,7 @@ void DetectionListener::onFrame(const Leap::Controller& controller) {
 				std::cout << "New selection" << '\n';
 				mode = 0;
 			}
-			validator.setGesture(ERROR);
+			validator.setGesture(ERROR_SG);
 		} else {
 			switch (mode) {
 				case 1:

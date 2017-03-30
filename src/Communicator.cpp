@@ -1,4 +1,5 @@
 #include "Communicator.hpp"
+#include <iostream>
 
 Communicator::Communicator() {
   WSAStartup(MAKEWORD(2,2), &WSAData);
@@ -19,6 +20,6 @@ Communicator::~Communicator(){
   WSACleanup();
 }
 
-int Communicator::sendData(string data) {
-  return send(csock, data.c_str(), string.size(), 0);
+int Communicator::sendData(char *data) {
+  return send(csock, data, sizeof(data), 0);
 }

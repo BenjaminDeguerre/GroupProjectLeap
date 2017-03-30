@@ -7,7 +7,6 @@
 #include <cstring>
 
 #include <opencv2/core/core.hpp>
-//#include <opencv2/imgcodecs.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -15,6 +14,7 @@
 #include "Leap.h"
 #include "StaticGestures.hpp"
 #include "Filter.hpp"
+#include "Communicator.hpp"
 
 class ModeHandler {
 private:
@@ -25,8 +25,10 @@ private:
 	bool initialized = false, selectingMode;
 	cv::Point previous = cv::Point(rows - 40, cols / 2), actual = cv::Point(rows - 40, cols / 2);
 
-	char letterMode1;
+	char letterMode1[20];
 	bool letterSelected = false;
+
+	Communicator communicator;
 	
 public:
   bool mode1(const StaticGesture gesture);

@@ -7,7 +7,7 @@
 #include "Leap.h"
 
 enum StaticGesture {
- ERROR = -1,
+ ERROR_SG = -1,
 
  GRAB_ONE_HAND,
 

@@ -16,7 +16,7 @@ StaticGesture StaticGestures::getGesture() {
 		return detectGestureTwoHands();
 		break;
 	default:
-		return ERROR;
+		return ERROR_SG;
 		break;
 	}
 }
@@ -25,7 +25,7 @@ StaticGesture StaticGestures::detectGestureOneHand() {
 
 	if (hands.count() != 1) {
 		//Should never go through here
-		return ERROR;
+		return ERROR_SG;
 	}
 
 	bool isLeft = hands[0].isLeft();
@@ -52,7 +52,7 @@ StaticGesture StaticGestures::detectGestureOneHand() {
 			return FIVE_FINGERS_LEFT_HAND;
 			break;
 			default:
-			return ERROR;
+			return ERROR_SG;
 			break;
 		}
 	} else {
@@ -76,7 +76,7 @@ StaticGesture StaticGestures::detectGestureOneHand() {
 			return FIVE_FINGERS_RIGHT_HAND;
 			break;
 			default:
-			return ERROR;
+			return ERROR_SG;
 			break;
 		}
 	}
@@ -84,7 +84,7 @@ StaticGesture StaticGestures::detectGestureOneHand() {
 
 StaticGesture StaticGestures::detectGestureTwoHands() {
 
-	if (hands.count() >= 3 || (hands.count() == 2 && hands[0].isLeft() && hands[1].isLeft())) return ERROR;
+	if (hands.count() >= 3 || (hands.count() == 2 && hands[0].isLeft() && hands[1].isLeft())) return ERROR_SG;
 
 	int extendedFingersHand1, extendedFingersHand2, countFingers;
 
@@ -122,7 +122,7 @@ StaticGesture StaticGestures::detectGestureTwoHands() {
 				return LEFT_FIVE_RIGHT_ZERO;
 				break;
 			default:
-				return ERROR;
+				return ERROR_SG;
 				break;
 		}
 	}
@@ -221,7 +221,7 @@ StaticGesture StaticGestures::detectGestureTwoHands() {
 		return LEFT_FIVE_RIGHT_FIVE;
 		break;
 	default:
-		return ERROR;
+		return ERROR_SG;
 		break;
 	}
 }

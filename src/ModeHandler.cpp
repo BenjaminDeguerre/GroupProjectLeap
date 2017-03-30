@@ -2,6 +2,7 @@
 
 bool ModeHandler::mode1(const StaticGesture gesture) {
 	if (letterSelected) {
+    std::string s;
 		switch (gesture) {
 			case LEFT_ZERO_RIGHT_ZERO:
 				std::cout << "Cancel, selecting new letter." << std::endl;
@@ -9,6 +10,7 @@ bool ModeHandler::mode1(const StaticGesture gesture) {
 				break;
 			case LEFT_FIVE_RIGHT_FIVE:
 				std::cout << "Accept : " << letterMode1 << std::endl << "Selecting new letter." << std::endl;
+        communicator.sendData(letterMode1);
 				letterSelected = false;
 				break;
 			case FIVE_FINGERS_LEFT_HAND:
@@ -21,115 +23,115 @@ bool ModeHandler::mode1(const StaticGesture gesture) {
 	} else {
 		switch (gesture) {
 			case LEFT_ZERO_RIGHT_ONE:
-				letterMode1 = 'a';
+        strcpy(letterMode1, "a");
 				letterSelected = true;
 				break;
 			case LEFT_ZERO_RIGHT_TWO:
-				letterMode1 = 'b';
+				strcpy(letterMode1, "b");
 				letterSelected = true;
 				break;
 			case LEFT_ZERO_RIGHT_THREE:
-				letterMode1 = 'c';
+				strcpy(letterMode1, "c");
 				letterSelected = true;
 				break;
 			case LEFT_ZERO_RIGHT_FOUR:
-				letterMode1 = 'd';
+				strcpy(letterMode1, "d");
 				letterSelected = true;
 				break;
 			case LEFT_ZERO_RIGHT_FIVE:
-				letterMode1 = 'e';
+				strcpy(letterMode1, "e");
 				letterSelected = true;
 				break;
 			case LEFT_ONE_RIGHT_ONE:
-				letterMode1 = 'f';
+				strcpy(letterMode1, "f");
 				letterSelected = true;
 				break;
 			case LEFT_ONE_RIGHT_TWO:
-				letterMode1 = 'g';
+				strcpy(letterMode1, "g");
 				letterSelected = true;
 				break;
 			case LEFT_ONE_RIGHT_THREE:
-				letterMode1 = 'h';
+				strcpy(letterMode1, "h");
 				letterSelected = true;
 				break;
 			case LEFT_ONE_RIGHT_FOUR:
-				letterMode1 = 'i';
+				strcpy(letterMode1, "i");
 				letterSelected = true;
 				break;
 			case LEFT_ONE_RIGHT_FIVE:
-				letterMode1 = 'j';
+				strcpy(letterMode1, "j");
 				letterSelected = true;
 				break;
 			case LEFT_TWO_RIGHT_ONE:
-				letterMode1 = 'k';
+				strcpy(letterMode1, "k");
 				letterSelected = true;
 				break;
 			case LEFT_TWO_RIGHT_TWO:
-				letterMode1 = 'l';
+				strcpy(letterMode1, "l");
 				letterSelected = true;
 				break;
 			case LEFT_TWO_RIGHT_THREE:
-				letterMode1 = 'm';
+				strcpy(letterMode1, "m");
 				letterSelected = true;
 				break;
 			case LEFT_TWO_RIGHT_FOUR:
-				letterMode1 = 'n';
+				strcpy(letterMode1, "n");
 				letterSelected = true;
 				break;
 			case LEFT_TWO_RIGHT_FIVE:
-				letterMode1 = 'o';
+				strcpy(letterMode1, "o");
 				letterSelected = true;
 				break;
 			case LEFT_THREE_RIGHT_ONE:
-				letterMode1 = 'p';
+				strcpy(letterMode1, "p");
 				letterSelected = true;
 				break;
 			case LEFT_THREE_RIGHT_TWO:
-				letterMode1 = 'q';
+				strcpy(letterMode1, "q");
 				letterSelected = true;
 				break;
 			case LEFT_THREE_RIGHT_THREE:
-				letterMode1 = 'r';
+				strcpy(letterMode1, "r");
 				letterSelected = true;
 				break;
 			case LEFT_THREE_RIGHT_FOUR:
-				letterMode1 = 's';
+				strcpy(letterMode1, "s");
 				letterSelected = true;
 				break;
 			case LEFT_THREE_RIGHT_FIVE:
-				letterMode1 = 't';
+				strcpy(letterMode1, "t");
 				letterSelected = true;
 				break;
 			case LEFT_FOUR_RIGHT_ONE:
-				letterMode1 = 'u';
+				strcpy(letterMode1, "u");
 				letterSelected = true;
 				break;
 			case LEFT_FOUR_RIGHT_TWO:
-				letterMode1 = 'v';
+				strcpy(letterMode1, "v");
 				letterSelected = true;
 				break;
 			case LEFT_FOUR_RIGHT_THREE:
-				letterMode1 = 'w';
+				strcpy(letterMode1, "w");
 				letterSelected = true;
 				break;
 			case LEFT_FOUR_RIGHT_FOUR:
-				letterMode1 = 'x';
+				strcpy(letterMode1, "x");
 				letterSelected = true;
 				break;
 			case LEFT_FOUR_RIGHT_FIVE:
-				letterMode1 = 'y';
+				strcpy(letterMode1, "y");
 				letterSelected = true;
 				break;
 			case LEFT_FIVE_RIGHT_ONE:
-				letterMode1 = 'z';
+				strcpy(letterMode1, "z");
 				letterSelected = true;
 				break;
 			case LEFT_FIVE_RIGHT_TWO:
-				letterMode1 = '.';
+				strcpy(letterMode1, ".");
 				letterSelected = true;
 				break;
 			case LEFT_FIVE_RIGHT_THREE:
-				letterMode1 = ' ';
+				strcpy(letterMode1, " ");
 				letterSelected = true;
 				break;
 			case FIVE_FINGERS_LEFT_HAND:

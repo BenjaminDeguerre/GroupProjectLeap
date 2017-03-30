@@ -18,7 +18,7 @@ private:
 	int count;
 	int frameLimit;
 
-	StaticGesture currentGesture;
+   StaticGesture currentGesture;
 	//bool mode_cout;
 
 	//preventing using default copy constructor
@@ -28,13 +28,13 @@ public:
 	// static GestControl& getInstance();
 	// static void freeInstance();
 
-	GestValidator() :currentGesture(ERROR), count(0), frameLimit(10) {};
+	GestValidator() :currentGesture(ERROR_SG), count(0), frameLimit(10) {};
 	~GestValidator() {};
 
 	void setFrameLimit(int limit);
 	int getFrameLimit();
-	void setGesture(StaticGesture gesture);
-  bool isValid(StaticGesture gesture);
+	void setGesture( StaticGesture gesture);
+  bool isValid( StaticGesture gesture);
 	// void setModeCout(bool mode) { mode_cout = mode; }
 	// bool getModeCout() { return mode_cout; }
 	//void validateGesture(int id);
