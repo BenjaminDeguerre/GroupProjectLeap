@@ -25,6 +25,9 @@ private:
 	bool initialized = false, selectingMode;
 	cv::Point previous = cv::Point(rows - 40, cols / 2), actual = cv::Point(rows - 40, cols / 2);
 
+	char letterMode1;
+	bool letterSelected = false;
+	
 public:
   bool mode1(const StaticGesture gesture);
   bool mode2();

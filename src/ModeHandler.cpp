@@ -1,102 +1,148 @@
 #include "ModeHandler.hpp"
 
 bool ModeHandler::mode1(const StaticGesture gesture) {
-	switch (gesture)
-	{
-		case LEFT_ZERO_RIGHT_ZERO:
-			std::cout << "Cancel";
-			break;
-		case LEFT_FIVE_RIGHT_FIVE:
-			std::cout << "Accept";
-			break;
-		case LEFT_ZERO_RIGHT_ONE:
-			std::cout << "a";
-			break;
-		case LEFT_ZERO_RIGHT_TWO:
-			std::cout << "b";
-			break;
-		case LEFT_ZERO_RIGHT_THREE:
-			std::cout << "c";
-			break;
-		case LEFT_ZERO_RIGHT_FOUR:
-			std::cout << "d";
-			break;
-		case LEFT_ZERO_RIGHT_FIVE:
-			std::cout << "e";
-			break;
-		case LEFT_ONE_RIGHT_ONE:
-			std::cout << "f";
-			break;
-		case LEFT_ONE_RIGHT_TWO:
-			std::cout << "g";
-			break;
-		case LEFT_ONE_RIGHT_THREE:
-			std::cout << "h";
-			break;
-		case LEFT_ONE_RIGHT_FOUR:
-			std::cout << "i";
-			break;
-		case LEFT_ONE_RIGHT_FIVE:
-			std::cout << "j";
-			break;
-		case LEFT_TWO_RIGHT_ONE:
-			std::cout << "k";
-			break;
-		case LEFT_TWO_RIGHT_TWO:
-			std::cout << "l";
-			break;
-		case LEFT_TWO_RIGHT_THREE:
-			std::cout << "m";
-			break;
-		case LEFT_TWO_RIGHT_FOUR:
-			std::cout << "n";
-			break;
-		case LEFT_TWO_RIGHT_FIVE:
-			std::cout << "o";
-			break;
-		case LEFT_THREE_RIGHT_ONE:
-			std::cout << "p";
-			break;
-		case LEFT_THREE_RIGHT_TWO:
-			std::cout << "q";
-			break;
-		case LEFT_THREE_RIGHT_THREE:
-			std::cout << "r";
-			break;
-		case LEFT_THREE_RIGHT_FOUR:
-			std::cout << "s";
-			break;
-		case LEFT_THREE_RIGHT_FIVE:
-			std::cout << "t";
-			break;
-		case LEFT_FOUR_RIGHT_ONE:
-			std::cout << "u";
-			break;
-		case LEFT_FOUR_RIGHT_TWO:
-			std::cout << "v";
-			break;
-		case LEFT_FOUR_RIGHT_THREE:
-			std::cout << "w";
-			break;
-		case LEFT_FOUR_RIGHT_FOUR:
-			std::cout << "x";
-			break;
-		case LEFT_FOUR_RIGHT_FIVE:
-			std::cout << "y";
-			break;
-		case LEFT_FIVE_RIGHT_ONE:
-			std::cout << "z";
-			break;
-		case LEFT_FIVE_RIGHT_TWO:
-			std::cout << ".";
-			break;
-		case LEFT_FIVE_RIGHT_THREE:
-			std::cout << " ";
-			break;
-		case FIVE_FINGERS_LEFT_HAND:
-			return false;
-		default:
-			break;
+	if (letterSelected) {
+		switch (gesture) {
+			case LEFT_ZERO_RIGHT_ZERO:
+				std::cout << "Cancel, selecting new letter." << std::endl;
+				letterSelected = false;
+				break;
+			case LEFT_FIVE_RIGHT_FIVE:
+				std::cout << "Accept : " << letterMode1 << std::endl << "Selecting new letter." << std::endl;
+				letterSelected = false;
+				break;
+			case FIVE_FINGERS_LEFT_HAND:
+				letterSelected = false;
+				return false;
+				break;
+			default:
+				break;
+		}
+	} else {
+		switch (gesture) {
+			case LEFT_ZERO_RIGHT_ONE:
+				letterMode1 = 'a';
+				letterSelected = true;
+				break;
+			case LEFT_ZERO_RIGHT_TWO:
+				letterMode1 = 'b';
+				letterSelected = true;
+				break;
+			case LEFT_ZERO_RIGHT_THREE:
+				letterMode1 = 'c';
+				letterSelected = true;
+				break;
+			case LEFT_ZERO_RIGHT_FOUR:
+				letterMode1 = 'd';
+				letterSelected = true;
+				break;
+			case LEFT_ZERO_RIGHT_FIVE:
+				letterMode1 = 'e';
+				letterSelected = true;
+				break;
+			case LEFT_ONE_RIGHT_ONE:
+				letterMode1 = 'f';
+				letterSelected = true;
+				break;
+			case LEFT_ONE_RIGHT_TWO:
+				letterMode1 = 'g';
+				letterSelected = true;
+				break;
+			case LEFT_ONE_RIGHT_THREE:
+				letterMode1 = 'h';
+				letterSelected = true;
+				break;
+			case LEFT_ONE_RIGHT_FOUR:
+				letterMode1 = 'i';
+				letterSelected = true;
+				break;
+			case LEFT_ONE_RIGHT_FIVE:
+				letterMode1 = 'j';
+				letterSelected = true;
+				break;
+			case LEFT_TWO_RIGHT_ONE:
+				letterMode1 = 'k';
+				letterSelected = true;
+				break;
+			case LEFT_TWO_RIGHT_TWO:
+				letterMode1 = 'l';
+				letterSelected = true;
+				break;
+			case LEFT_TWO_RIGHT_THREE:
+				letterMode1 = 'm';
+				letterSelected = true;
+				break;
+			case LEFT_TWO_RIGHT_FOUR:
+				letterMode1 = 'n';
+				letterSelected = true;
+				break;
+			case LEFT_TWO_RIGHT_FIVE:
+				letterMode1 = 'o';
+				letterSelected = true;
+				break;
+			case LEFT_THREE_RIGHT_ONE:
+				letterMode1 = 'p';
+				letterSelected = true;
+				break;
+			case LEFT_THREE_RIGHT_TWO:
+				letterMode1 = 'q';
+				letterSelected = true;
+				break;
+			case LEFT_THREE_RIGHT_THREE:
+				letterMode1 = 'r';
+				letterSelected = true;
+				break;
+			case LEFT_THREE_RIGHT_FOUR:
+				letterMode1 = 's';
+				letterSelected = true;
+				break;
+			case LEFT_THREE_RIGHT_FIVE:
+				letterMode1 = 't';
+				letterSelected = true;
+				break;
+			case LEFT_FOUR_RIGHT_ONE:
+				letterMode1 = 'u';
+				letterSelected = true;
+				break;
+			case LEFT_FOUR_RIGHT_TWO:
+				letterMode1 = 'v';
+				letterSelected = true;
+				break;
+			case LEFT_FOUR_RIGHT_THREE:
+				letterMode1 = 'w';
+				letterSelected = true;
+				break;
+			case LEFT_FOUR_RIGHT_FOUR:
+				letterMode1 = 'x';
+				letterSelected = true;
+				break;
+			case LEFT_FOUR_RIGHT_FIVE:
+				letterMode1 = 'y';
+				letterSelected = true;
+				break;
+			case LEFT_FIVE_RIGHT_ONE:
+				letterMode1 = 'z';
+				letterSelected = true;
+				break;
+			case LEFT_FIVE_RIGHT_TWO:
+				letterMode1 = '.';
+				letterSelected = true;
+				break;
+			case LEFT_FIVE_RIGHT_THREE:
+				letterMode1 = ' ';
+				letterSelected = true;
+				break;
+			case FIVE_FINGERS_LEFT_HAND:
+				letterSelected = false;
+				std::cout << "Leaving mode 1" << '\n';
+				return false;
+				break;
+			default:
+				break;
+		}
+		if (letterSelected) {
+			std::cout << "Selected letter : " << letterMode1 << std::endl;
+		}
 	}
   return true;
 }
