@@ -89,14 +89,16 @@ StaticGesture StaticGestures::detectGestureTwoHands() {
 	int extendedFingersHand1, extendedFingersHand2, countFingers;
 
 	//putting left hand to the zero position
-	if (!hands[0].isLeft()) {
-		Leap::Hand term = hands[0];
-		hands[0] = hands[1];
-		hands[1] = term;
+
+	if (hands[0].isLeft()) {
+		extendedFingersHand1 = hands[0].fingers().extended().count();
+		extendedFingersHand2 = hands[1].fingers().extended().count();
+	} else {
+		extendedFingersHand2 = hands[0].fingers().extended().count();
+		extendedFingersHand1 = hands[1].fingers().extended().count();
 	}
 
-	extendedFingersHand1 = hands[0].fingers().extended().count();
-	extendedFingersHand2 = hands[1].fingers().extended().count();
+
 
 	//avoiding possible mixing in detections
 	if (extendedFingersHand2 == 0) {
