@@ -155,10 +155,31 @@ bool ModeHandler::mode2() {
 
 bool ModeHandler::mode3(const StaticGesture gesture, const Leap::GestureList gestures, const Leap::FingerList fingers) {
 
+  Leap::Vector newPosition;
+
   //Switching mode if ten fingers
   if (gesture == LEFT_ZERO_RIGHT_ZERO) {
     cv::destroyWindow("My image");
     return false;
+  }
+
+  if (gesture == GRAB_ONE_HAND) {
+    stopMode3 = true;
+  }
+  else if (gesture != ERROR_SG) {
+    stopMode3 = false;
+    
+    if (fingers.count() != 0) {
+      positions.clear();
+      for (Leap::FingerList::const_iterator fl = fingers.begin(); fl != fingers.end(); fl++) {
+        if ((*fl).type() == 1) {
+          newPosition = (*fl).tipPosition();
+        }
+      }
+      actual.y = -static_cast<int>(newPosition.y) + rows - 40;
+      actual.x = static_cast<int>(newPosition.x) * 2 + cols / 2;
+      positions.push_back(newPosition);
+    }
   }
 
   //Looking for a swipe (to be changed for dynamic gestures)
@@ -168,8 +189,7 @@ bool ModeHandler::mode3(const StaticGesture gesture, const Leap::GestureList ges
   	case Leap::Gesture::TYPE_SWIPE:
   		image.setTo(cv::Scalar(255));
   		cv::imshow("My image", image);
-      std::cout << "here" << std::endl;
-  		cv::waitKey(100);
+  		cv::waitKey(300);
   		break;
   	default:
   		break;
@@ -177,8 +197,8 @@ bool ModeHandler::mode3(const StaticGesture gesture, const Leap::GestureList ges
   }
 
   //Drawing
-  if (gesture != GRAB_ONE_HAND && fingers.count() > 0) {
-  	Leap::Vector newPosition, fingerTip;
+  if (!stopMode3 && fingers.count() > 0) {
+  	Leap::Vector fingerTip;
   	Leap::FingerList::const_iterator fl = fingers.begin();
   	if (fingers.count() != 0) {
   		for (Leap::FingerList::const_iterator fl = fingers.begin(); fl != fingers.end(); fl++) {
@@ -206,8 +226,7 @@ bool ModeHandler::mode3(const StaticGesture gesture, const Leap::GestureList ges
   		actual.x = static_cast<int>(fingerTip.x) * 2 + cols / 2;
   		line(image, previous, actual, cv::Scalar(0, 0, 0), 5);
       cv::imshow("My image", image);
-      std::cout << "there" << std::endl;
-      cv::waitKey(100);
+      cv::waitKey(40);
   	}
   }
   return true;

@@ -74,18 +74,18 @@ void DetectionListener::onFrame(const Leap::Controller& controller) {
 			switch (mode) {
 				case 1:
           selectingMode = !handler.mode1(sGesture);
-				break;
+				  break;
 				case 2:
-				selectingMode = !handler.mode2();
+				  selectingMode = !handler.mode2();
 				break;
 				case 3:
 				  selectingMode = !handler.mode3(sGesture, frame.gestures(), frame.fingers());
-				break;
+				  break;
 				case 4:
-				selectingMode = !handler.mode4();
-				break;
+				  selectingMode = !handler.mode4();
+				  break;
 				default:
-				break;
+				  break;
 			}
 			if (selectingMode) {
 				mode = 0;

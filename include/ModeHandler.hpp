@@ -28,6 +28,8 @@ private:
 	char letterMode1[20];
 	bool letterSelected = false;
 
+  bool stopMode3 = false;
+
 	Communicator communicator;
 	
 public:
