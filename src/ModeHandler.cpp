@@ -168,6 +168,7 @@ bool ModeHandler::mode3(const StaticGesture gesture, const Leap::GestureList ges
   	case Leap::Gesture::TYPE_SWIPE:
   		image.setTo(cv::Scalar(255));
   		cv::imshow("My image", image);
+      std::cout << "here" << std::endl;
   		cv::waitKey(100);
   		break;
   	default:
@@ -204,6 +205,9 @@ bool ModeHandler::mode3(const StaticGesture gesture, const Leap::GestureList ges
   		actual.y = -static_cast<int>(fingerTip.y) + rows - 40;
   		actual.x = static_cast<int>(fingerTip.x) * 2 + cols / 2;
   		line(image, previous, actual, cv::Scalar(0, 0, 0), 5);
+      cv::imshow("My image", image);
+      std::cout << "there" << std::endl;
+      cv::waitKey(100);
   	}
   }
   return true;

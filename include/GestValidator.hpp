@@ -33,10 +33,8 @@ public:
 
 	void setFrameLimit(int limit);
 	int getFrameLimit();
-	void setGesture( StaticGesture gesture);
-  bool isValid( StaticGesture gesture);
-	// void setModeCout(bool mode) { mode_cout = mode; }
-	// bool getModeCout() { return mode_cout; }
-	//void validateGesture(int id);
+	void setGesture(StaticGesture gesture);
+  void update(StaticGesture gesture);
+  StaticGesture getCurrentValidGesture();
 };
 #endif

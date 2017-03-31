@@ -27,53 +27,59 @@ void DetectionListener::onFrame(const Leap::Controller& controller) {
 	const Leap::Frame frame = controller.frame();
 	StaticGestures sGestures(frame.hands());
 	StaticGesture sGesture = sGestures.getGesture();
-	if (validator.isValid(sGesture) ){
+  validator.update(sGesture);
+  sGesture = validator.getCurrentValidGesture();
+ 
 		if (mode == 0) {
 			switch (sGesture) {
 				case ONE_FINGER_RIGHT_HAND:
 				//mode 1 - select text and print it on the screen
 				std::cout << "selecting mode 1" << '\n';
 				mode = 1;
+        validator.setGesture(ERROR_SG); //setting to new gesture
 				break;
 				case TWO_FINGERS_RIGHT_HAND:
 				//mode 2 - writing with gestures
 				std::cout << "selecting mode 2" << '\n';
 				mode = 2;
+        validator.setGesture(ERROR_SG); //setting to new gesture
 				break;
 				case THREE_FINGERS_RIGHT_HAND:
 				//mode 3 - drawing by finger
 				std::cout << "selecting mode 3" << '\n';
 				mode = 3;
+        validator.setGesture(ERROR_SG); //setting to new gesture
 				break;
 				case FOUR_FINGERS_RIGHT_HAND:
 				//mode 4 - moving the robot
 				std::cout << "selecting mode 4" << '\n';
 				mode = 4;
+        validator.setGesture(ERROR_SG); //setting to new gesture
 				break;
 				default:
 				//do nothing and wait for detection.
 				break;
 			}
-			validator.setGesture(ERROR_SG); //setting to new gesture
 		} else if (mode != 0 && selectingMode) {
 			if (sGesture == GRAB_ONE_HAND) {
 				std::cout << "Activating selected mode" << '\n';
 				selectingMode = false;
+        validator.setGesture(ERROR_SG);
 			} else if (sGesture == FIVE_FINGERS_RIGHT_HAND) {
 				std::cout << "New selection" << '\n';
 				mode = 0;
+        validator.setGesture(ERROR_SG);
 			}
-			validator.setGesture(ERROR_SG);
 		} else {
 			switch (mode) {
 				case 1:
-        selectingMode = !handler.mode1(sGesture);
+          selectingMode = !handler.mode1(sGesture);
 				break;
 				case 2:
 				selectingMode = !handler.mode2();
 				break;
 				case 3:
-				selectingMode = !handler.mode3(sGesture, frame.gestures(), frame.fingers());
+				  selectingMode = !handler.mode3(sGesture, frame.gestures(), frame.fingers());
 				break;
 				case 4:
 				selectingMode = !handler.mode4();
@@ -85,7 +91,6 @@ void DetectionListener::onFrame(const Leap::Controller& controller) {
 				mode = 0;
 			}
 		}
-	}
 }
 
 void DetectionListener::onFocusGained(const Leap::Controller& controller) {

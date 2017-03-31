@@ -28,7 +28,18 @@ void GestValidator::setGesture(StaticGesture gesture) {
 	currentGesture = gesture;
 }
 
-bool GestValidator::isValid(StaticGesture gesture){
+StaticGesture GestValidator::getCurrentValidGesture() {
+  //Call controller on the count
+  if (count >= frameLimit) {
+    //validateGesture(gestureId);
+    count = 0;
+    return currentGesture;
+  }
+
+  return ERROR_SG;
+}
+
+void GestValidator::update(StaticGesture gesture){
 
 	if (currentGesture == gesture) {
 		count++;
@@ -38,13 +49,4 @@ bool GestValidator::isValid(StaticGesture gesture){
 	}
 
 	currentGesture = gesture;
-
-	//Call controller on the count
-	if (count == frameLimit) {
-		//validateGesture(gestureId);
-		count = 0;
-		return true;
-	}
-
-	return false;
 }
