@@ -44,18 +44,6 @@ void DetectionListener::onFrame(const Leap::Controller& controller) {
 				mode = 2;
         validator.setGesture(ERROR_SG); //setting to new gesture
 				break;
-				case THREE_FINGERS_RIGHT_HAND:
-				//mode 3 - drawing by finger
-				std::cout << "selecting mode 3" << '\n';
-				mode = 3;
-        validator.setGesture(ERROR_SG); //setting to new gesture
-				break;
-				case FOUR_FINGERS_RIGHT_HAND:
-				//mode 4 - moving the robot
-				std::cout << "selecting mode 4" << '\n';
-				mode = 4;
-        validator.setGesture(ERROR_SG); //setting to new gesture
-				break;
 				default:
 				//do nothing and wait for detection.
 				break;
@@ -76,14 +64,8 @@ void DetectionListener::onFrame(const Leap::Controller& controller) {
           selectingMode = !handler.mode1(sGesture);
 				  break;
 				case 2:
-				  selectingMode = !handler.mode2();
+				  selectingMode = !handler.mode2(sGesture, frame.gestures(), frame.fingers());
 				break;
-				case 3:
-				  selectingMode = !handler.mode3(sGesture, frame.gestures(), frame.fingers());
-				  break;
-				case 4:
-				  selectingMode = !handler.mode4();
-				  break;
 				default:
 				  break;
 			}

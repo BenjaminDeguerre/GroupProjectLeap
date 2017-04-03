@@ -34,9 +34,7 @@ private:
 	
 public:
   bool mode1(const StaticGesture gesture);
-  bool mode2();
-  bool mode3(const StaticGesture gesture, const Leap::GestureList gestures, const Leap::FingerList fingers);
-  bool mode4();
+  bool mode2(const StaticGesture gesture, const Leap::GestureList gestures, const Leap::FingerList fingers);
 };
 
 #endif

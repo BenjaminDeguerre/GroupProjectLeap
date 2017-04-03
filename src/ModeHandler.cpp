@@ -149,11 +149,7 @@ bool ModeHandler::mode1(const StaticGesture gesture) {
   return true;
 }
 
-bool ModeHandler::mode2() {
-  return false;
-}
-
-bool ModeHandler::mode3(const StaticGesture gesture, const Leap::GestureList gestures, const Leap::FingerList fingers) {
+bool ModeHandler::mode2(const StaticGesture gesture, const Leap::GestureList gestures, const Leap::FingerList fingers) {
 
   Leap::Vector newPosition;
 
@@ -230,8 +226,4 @@ bool ModeHandler::mode3(const StaticGesture gesture, const Leap::GestureList ges
   	}
   }
   return true;
-}
-
-bool ModeHandler::mode4() {
-  return false;
 }
