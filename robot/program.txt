@@ -1,0 +1,528 @@
+
+def myProg():
+
+
+number c = 0;         // c, d, a, b, g used to write letter from library
+number d = 0;
+number a = 10;
+number b = 5;
+number g = 2;
+
+pose pp;
+number mode;              // mode number read from the server
+number x;                 // position - x -read from the server
+number y;                 // position - y - read from the server
+number z = 0;             // position - z - defaultly should be 0 - constant writting
+string letter;            // for mode 1, read from the server
+
+
+//Library of letters -  written as set of functions:
+
+def myA(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/2), d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+ (a/3), 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+ (a/3), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+ (a/3), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+ (a/3), 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej()(c+b, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myB(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(3*b/4), d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(7*a/8), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(5*a/8), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(3*b/4), d+(a/2), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+(a/2), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(3*b/4), d+(a/2), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(3*a/8), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej()(c+b, d+(a/8), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(3*b/4), d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myC(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c+b, d+(7*a/8), 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(7*a/8), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(3*b/4), d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/4), d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+(7*a/8), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+(a/8), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/4), d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(3*b/4), d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(a/8), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(a/8), 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myD(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(3*b/4), d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(7*a/8), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(a/8), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(3*b/4), d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myE(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+(a/2), 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+(a/2), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(a/2), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(a/2), 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myF(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+(a/2), 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+(a/2), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(a/2), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(a/2), 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myG(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c+b, d+(7*a/8), 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(7*a/8), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(3*b/4), d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/4), d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+(7*a/8), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+(a/8), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/4), d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(a/3), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/2), d+(a/3), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/2), d+(a/3), 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myH(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+(a/2), 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+(a/2), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(a/2), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(a/2), 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myI(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c+(b/2), d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/2), d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/2), d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/2), d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myJ(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d+(a/4), 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+(a/4), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/2), d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/2), d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myK(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+(a/2), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+(a/2), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myL(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myM(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(2*b), d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(2*b), d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(2*b), d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(2*b)+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+(2*b)+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myN(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myO(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myP(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(a/2), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+(a/2), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+(a/2), 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myR(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(a/2), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+(a/2), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myS(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c+b, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+(a/2), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+(a/2), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myT(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/2), d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/2), d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/2), d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myU(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myV(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/2), d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myW(c, d):
+set_pos(c, d, 10, 0, 0, 3.14/2)
+movej((c, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+movej((c+(b/2), d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+movej((c+b, d+(a/3), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+movej((c+(3*b/2), d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+movej((c+(2*b), d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+movej((c+(2*b), d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+movej((c+(2*b)+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+c = c+(2*b)+g;
+d = d;
+socket_send_string(done)
+return(c, d)
+
+def myX(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myY(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c+(b/2), d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/2), d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/2), d+(a/3), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/2), d+(a/3), 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+(b/2), d+(a/3), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myZ(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d+a, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+b+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def mySpace(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  movej((c+g, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c+g;
+  d = d;
+  socket_send_string(done)
+  return(c, d)
+end
+
+def myEnter(c, d):
+  set_pos(c, d, 10, 0, 0, 3.14/2)
+  movej((c, d-a-g, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  c = c;
+  d = d-a-g;
+  socket_send_string(done)
+  return(c, d)
+end
+
+
+//Main part, hopefully I'll finish tomorrow ^^
+
+while mode == 1:
+    if letter == a:
+      pp = myA
+    elif letter == b:
+      pp = myB
+    elif letter == c:
+      pp = myC
+    elif letter == d:
+      pp = myD
+    elif letter == e:
+      pp = myE
+    elif letter == f:
+      pp = myF
+    elif letter == g:
+      pp = myG
+    elif letter == h:
+      pp = myH
+    elif letter == i:
+      pp = myI
+    elif letter == j:
+      pp = myJ
+    elif letter == k:
+      pp = myK
+    elif letter == l:
+      pp = myL
+    elif letter == m:
+      pp = myM
+    elif letter == n:
+      pp = myN
+    elif letter == o:
+      pp = myO
+    elif letter == p:
+      pp = myP
+    elif letter == r:
+      pp = myR
+    elif letter == s:
+      pp = myS
+    elif letter == t:
+      pp = myT
+    elif letter == u:
+      pp = myU
+    elif letter == v:
+      pp = myV
+    elif letter == w:
+      pp = myW
+    elif letter == x:
+      pp = myX
+    elif letter == y:
+      pp = myY
+    elif letter == z:
+      pp = myZ
+    elif letter == space:
+      pp = mySpace
+    elif letter == enter:
+      pp = myEnter
+    end
+
+while mode == 2:
+  movej((x, y, z=0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+  socket_send_string(done)
+end
+
+
+
+
+
+end
