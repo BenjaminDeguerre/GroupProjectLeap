@@ -164,7 +164,7 @@ bool ModeHandler::mode2(const StaticGesture gesture, const Leap::GestureList ges
   }
   else if (gesture != ERROR_SG) {
     stopMode3 = false;
-    
+
     if (fingers.count() != 0) {
       positions.clear();
       for (Leap::FingerList::const_iterator fl = fingers.begin(); fl != fingers.end(); fl++) {
@@ -215,6 +215,8 @@ bool ModeHandler::mode2(const StaticGesture gesture, const Leap::GestureList ges
   	}
 
   	fingerTip = filter.filterMean(positions);
+		std::cout << fingerTip.x << '\n';
+		std::cout << fingerTip.y << '\n';
   	if (fingerTip.x != 0 && fingerTip.y != 0) {
   		previous.x = actual.x;
   		previous.y = actual.y;

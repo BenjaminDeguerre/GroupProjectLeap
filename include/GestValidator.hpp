@@ -9,25 +9,11 @@
 
 class GestValidator {
 private:
-	// struct Handler {
-	// 	GestControl *instance;
-	// 	Handler() :instance(0) {};
-	// 	~Handler() { if (instance) delete instance; }
-	// };
-	// static Handler handler;
 	int count;
 	int frameLimit;
-
-   StaticGesture currentGesture;
-	//bool mode_cout;
-
-	//preventing using default copy constructor
-	//GestControl& operator=(const GestControl& gc) {};
+	StaticGesture currentGesture;
 
 public:
-	// static GestControl& getInstance();
-	// static void freeInstance();
-
 	GestValidator() :currentGesture(ERROR_SG), count(0), frameLimit(10) {};
 	~GestValidator() {};
 

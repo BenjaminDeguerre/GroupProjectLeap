@@ -71,13 +71,12 @@ enum StaticGesture {
 
 class StaticGestures {
 private:
-
-    StaticGesture detectGestureOneHand();
+  StaticGesture detectGestureOneHand();
 	StaticGesture detectGestureTwoHands();
 
 	Leap::HandList hands;
 	int handCount;
-
+  
 public:
 	StaticGestures() {}
 	StaticGestures(Leap::HandList hands);

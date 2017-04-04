@@ -4,6 +4,7 @@ Filter::Filter() {
 }
 
 Leap::Vector Filter::filterMean(std::vector<Leap::Vector> positions){
+
   float x = 0, y = 0,z = 0;
   int size = static_cast<int>(positions.size());
 

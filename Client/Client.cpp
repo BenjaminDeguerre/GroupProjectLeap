@@ -20,7 +20,7 @@ int main()
     sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     sin.sin_addr.s_addr = inet_addr("127.0.0.1");
     sin.sin_family = AF_INET;
-    sin.sin_port = htons(23);
+    sin.sin_port = htons(30001);
     iResult = connect(sock, (SOCKADDR *)&sin, sizeof(sin));
     if (iResult == SOCKET_ERROR) {
       wprintf(L"connect function failed with error: %ld\n", WSAGetLastError());
