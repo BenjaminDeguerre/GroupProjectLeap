@@ -17,7 +17,7 @@ private:
 	GestValidator validator;
 
 	int mode = 0;
-	bool selectingMode = true;
+	bool selectingMode;
 
 public:
 	DetectionListener(): selectingMode(true) {}

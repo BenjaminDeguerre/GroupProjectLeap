@@ -1,35 +1,30 @@
 @startuml
 
-class Gesture {
-  {abstract} int getGesture()
+class StaticGestures {
+  +StaticGestures()
+  +~StaticGestures()
+  +StaticGestures(hand)
+  +StaticGesture getGesture()
+  -StaticGesture detectGestureOneHand()
+  -StaticGesture detectGestureTwoHands()
+
+
+  -HandList hands
+  -int handCount
 }
 
-class StaticGesture {
-  +StaticGesture()
-  +StaticGesture(hand)
-  -detectGestureOneHand()
-  -detectGestureTwoHands()
-  +getGesture()
+class StaticGesture <<Enum>> {
+  ERROR_SG
+  GRAB_ONE_HAND
 
-  -hands
-  -hand
-  -handCount
-  -strength
-  -leftHand
-  -count
-}
+  ONE_FINGER_LEFT_HAND
+  ...
 
-class DynamicGesture {
-  +DynamicGesture()
-  +DynamicGesture(hand)
-  +getGesture()
+  ONE_FINGER_RIGHT_HAND
+  ...
 
-  -hands
-  -hand
-  -handCount
-  -strength
-  -leftHand
-  -count
+  LEFT_ZERO_RIGHT_ZERO
+  ...
 }
 
 class Filter {
@@ -39,53 +34,65 @@ class Filter {
 }
 
 class DetectionListener {
-  +onInit()
-  +onConnect()
-  +onDisconnect()
-  +onExit()
-	+onFrame()
-	+onFocusGained()
-	+onFocusLost()
-	+onDeviceChange()
-	+onServiceConnect()
-	+onServiceDisconnect()
+  +DetectionListener()
+  +onInit(Leap::Controller&)
+  +onConnect(Leap::Controller&)
+  +onDisconnect(Leap::Controller&)
+  +onExit(Leap::Controller&)
+	+onFrame(Leap::Controller&)
+	+onFocusGained(Leap::Controller&)
+	+onFocusLost(Leap::Controller&)
+	+onDeviceChange(Leap::Controller&)
+	+onServiceConnect(Leap::Controller&)
+	+onServiceDisconnect(Leap::Controller&)
 
-  -numberOfPositions
-  -rows
-  -cols
-  -historicSize
-  -rowOrigin
-  -colOrigin
-  -positions
-  -filter
-  -image
-  -initialized
-  -previous
-  -actual
+  -ModeHandler handler
+  -GestValidator validator
+
+  -int mode
+  -bool selectingMode
 }
 
 class ModelHandler {
-  +setMode(int)
-  +execute(Gesture)
+  +bool mode1(StaticGesture gesture)
+  +bool mode2(StaticGesture gesture, Leap::GestureList gestures, Leap::FingerList fingers)
+
+  -Communicator communicator
 }
 
 class Communicator {
-  +sendData(int*)
+  -WSADATA WSAData
+  -SOCKET sock
+  -SOCKET csock
+  -SOCKADDR_IN sin
+  -SOCKADDR_IN csin
+  -int sinsize
+
+  +Communicator()
+  +~Communicator()
+  +sendData(char*)
 }
 
 class GestValidator {
-  +isValid()
+  +GestValidator() :currentGesture(ERROR_SG), count(0), frameLimit(10) {}
+	+~GestValidator() {}
 
-  -count
-  -frameLimit
-  -currentGesture
+	+void setFrameLimit(int limit)
+	+int getFrameLimit()
+	+void setGesture(StaticGesture gesture)
+  +void update(StaticGesture gesture)
+  +StaticGesture getCurrentValidGesture()
+
+  -int count
+  -int frameLimit
+  -StaticGesture currentGesture
 }
 
-Gesture <|-- StaticGesture
-Gesture <|-- DynamicGesture
 ModelHandler *-- Communicator
 ModelHandler *-- Filter
 DetectionListener *-- ModelHandler
 DetectionListener *-- GestValidator
-DynamicGesture *-- Filter
+GestValidator *-- StaticGesture
+
+hide StaticGesture methods
 @enduml
