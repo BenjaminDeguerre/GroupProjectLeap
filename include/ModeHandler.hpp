@@ -18,11 +18,11 @@
 
 class ModeHandler {
 private:
-	int numberOfPositions = 0, rows = 460, cols = 680, historicSize = 10, rowOrigin, colOrigin, mode = 0;
+	int numberOfPositions = 0, rows = 460, cols = 680, historicSize = 10, rowOrigin, colOrigin;
 	std::vector<Leap::Vector> positions;
 	Filter filter;
 	cv::Mat image = cv::Mat(rows, cols, CV_8UC1, cv::Scalar(255));
-	bool initialized = false, selectingMode;
+	bool initialized = false;
 	cv::Point previous = cv::Point(rows - 40, cols / 2), actual = cv::Point(rows - 40, cols / 2);
 
 	char letterMode1[20];
@@ -31,12 +31,10 @@ private:
   bool stopMode3 = false;
 
 	Communicator communicator;
-	
+
 public:
   bool mode1(const StaticGesture gesture);
-  bool mode2();
-  bool mode3(const StaticGesture gesture, const Leap::GestureList gestures, const Leap::FingerList fingers);
-  bool mode4();
+  bool mode2(const StaticGesture gesture, const Leap::GestureList gestures, const Leap::FingerList fingers);
 };
 
 #endif

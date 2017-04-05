@@ -6,7 +6,7 @@ Communicator::Communicator() {
   sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
   sin.sin_addr.s_addr = INADDR_ANY;
   sin.sin_family = AF_INET;
-  sin.sin_port = htons(23); //listening port
+  sin.sin_port = htons(30001); //listening port
   bind(sock, (SOCKADDR *)&sin, sizeof(sin));
   listen(sock, 0);
   sinsize = sizeof(csin);

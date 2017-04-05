@@ -13,8 +13,8 @@ enum DynamicGesture {
 
 class Gesture{
 private:
-  	int detectGestureOneHand();
-  	int detectGestureTwoHands();
+  int detectGestureOneHand();
+  int detectGestureTwoHands();
 
 	Leap::HandList hands;
 	int handCount;
@@ -30,10 +30,8 @@ public:
 	Gesture(Leap::HandList hand);
 	~Gesture();
 
-	//void on();
-	//void chooseMode();
 	void checkLetter(int num);
-
+  
   //return for one and two hands
 	int getGesture();
 };

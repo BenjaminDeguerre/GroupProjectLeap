@@ -9,7 +9,7 @@
 
 #include <iostream>
 #include <cstring>
- 
+
 #include "Leap.h"
 
 #include "DetectionListener.hpp"
@@ -20,7 +20,6 @@ int main(int argc, char** argv) {
 	// Create a sample listener and controller
 	DetectionListener listener;
 	Controller controller;
-//	listener.count = 0;
 
 	// Have the sample listener receive events from the controller
 	controller.addListener(listener);

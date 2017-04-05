@@ -10,7 +10,6 @@ class Filter {
 public:
   Filter();
   Leap::Vector filterMean(std::vector<Leap::Vector> positions);
-
 private:
 };
 

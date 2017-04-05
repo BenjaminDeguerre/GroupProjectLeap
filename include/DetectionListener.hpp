@@ -6,11 +6,6 @@
 #include <iostream>
 #include <cstring>
 
-#include <opencv2/core/core.hpp>
-//#include <opencv2/imgcodecs.hpp>
-#include <opencv2/opencv.hpp>
-#include <opencv2/highgui/highgui.hpp>
-
 #include "Leap.h"
 #include "StaticGestures.hpp"
 #include "GestValidator.hpp"
@@ -21,12 +16,8 @@ private:
 	ModeHandler handler;
 	GestValidator validator;
 
-	int numberOfPositions = 0, rows = 460, cols = 680, historicSize = 10, rowOrigin, colOrigin, mode = 0;
-	std::vector<Leap::Vector> positions;
-	Filter filter;
-	cv::Mat image = cv::Mat(rows, cols, CV_8UC1, cv::Scalar(255));
-	bool initialized = false, selectingMode;
-	cv::Point previous = cv::Point(rows - 40, cols / 2), actual = cv::Point(rows - 40, cols / 2);
+	int mode = 0;
+	bool selectingMode;
 
 public:
 	DetectionListener(): selectingMode(true) {}

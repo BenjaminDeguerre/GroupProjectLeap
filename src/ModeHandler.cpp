@@ -151,11 +151,7 @@ bool ModeHandler::mode1(const StaticGesture gesture) {
   return true;
 }
 
-bool ModeHandler::mode2() {
-  return false;
-}
-
-bool ModeHandler::mode3(const StaticGesture gesture, const Leap::GestureList gestures, const Leap::FingerList fingers) {
+bool ModeHandler::mode2(const StaticGesture gesture, const Leap::GestureList gestures, const Leap::FingerList fingers) {
 
   Leap::Vector newPosition;
 
@@ -220,6 +216,8 @@ bool ModeHandler::mode3(const StaticGesture gesture, const Leap::GestureList ges
   	}
 
   	fingerTip = filter.filterMean(positions);
+		std::cout << fingerTip.x << '\n';
+		std::cout << fingerTip.y << '\n';
   	if (fingerTip.x != 0 && fingerTip.y != 0) {
   		previous.x = actual.x;
   		previous.y = actual.y;
@@ -231,8 +229,4 @@ bool ModeHandler::mode3(const StaticGesture gesture, const Leap::GestureList ges
   	}
   }
   return true;
-}
-
-bool ModeHandler::mode4() {
-  return false;
 }
