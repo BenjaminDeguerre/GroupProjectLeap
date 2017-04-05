@@ -15,6 +15,8 @@ bool ModeHandler::mode1(const StaticGesture gesture) {
 				break;
 			case FIVE_FINGERS_LEFT_HAND:
 				letterSelected = false;
+				strcpy(letterMode1, "!");
+				communicator.sendData(letterMode1);
 				return false;
 				break;
 			default:
@@ -168,7 +170,7 @@ bool ModeHandler::mode3(const StaticGesture gesture, const Leap::GestureList ges
   }
   else if (gesture != ERROR_SG) {
     stopMode3 = false;
-    
+
     if (fingers.count() != 0) {
       positions.clear();
       for (Leap::FingerList::const_iterator fl = fingers.begin(); fl != fingers.end(); fl++) {
@@ -196,7 +198,6 @@ bool ModeHandler::mode3(const StaticGesture gesture, const Leap::GestureList ges
   	}
   }
 
-  //Drawing
   if (!stopMode3 && fingers.count() > 0) {
   	Leap::Vector fingerTip;
   	Leap::FingerList::const_iterator fl = fingers.begin();
