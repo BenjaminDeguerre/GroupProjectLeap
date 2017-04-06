@@ -1,11 +1,13 @@
 
 def myProg():
 
-  number c = 0;         // c, d, a, b, g used to write letter from library
-  number d = 0;
-  number a = 10;
-  number b = 5;
-  number g = 2;
+  number c = 0.53;         // c, d, a, b, g used to write letter from library
+  number d = -0.495;
+  number a = 0.050;
+  number b = 0.025;
+  number g = 0.02;
+  number z1 = 0.172;
+  number z2 = 0.060;
 
   pose pp;
   number mode;              // mode number read from the server
@@ -18,20 +20,19 @@ def myProg():
   //Library of letters -  written as set of functions:
 
   def myA(c, d):
-    set_pos(c, d, 10, 0, 0, 3.14/2)
-    movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
-    movej((c+(b/2), d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
-    movej((c+b, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
-    movej((c+b, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
-    movej((c, d+ (a/3), 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
-    movej((c, d+ (a/3), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
-    movej((c+b, d+ (a/3), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
-    movej((c+b, d+ (a/3), 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
-    movej()(c+b, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
-    movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+    set_pos(c, d, z1, 0, 3.14, 0)
+    movej((c, d, z2, 0, 3.14, 0), 3, 0.75, 0, 0)
+    movej((c+(b/2), d+a, z2, 0, 3.14, 0), 3, 0.75, 0, 0)
+    movej((c+b, d, z2, 0, 3.14, 0), 3, 0.75, 0, 0)
+    movej((c+b, d, z1, 0, 3.14, 0), 3, 0.75, 0, 0)
+    movej(p[c, d+ (a/3), z1, 0, 3.14, 0], 3, 0.75, 0, 0)
+    movej((c, d+ (a/3), z2, 0, 3.14, 0), 3, 0.75, 0, 0)
+    movej((c+b, d+ (a/3), z2, 0, 3.14, 0), 3, 0.75, 0, 0)
+    movej((c+b, d+ (a/3), z1, 0, 3.14, 0), 3, 0.75, 0, 0)
+    movej((c+b, d, z1, 0, 3.14, 0), 3, 0.75, 0, 0)
+    movej((c+b+g, d, z1, 0, 3.14, 0), 3, 0.75, 0, 0)
     c = c+b+g;
     d = d;
-    socket_send_string(done)
     return(c, d)
   end
 
@@ -294,6 +295,25 @@ def myProg():
     return(c, d)
   end
 
+  def myQ(c, d):
+    set_pos(c, d, 10, 0, 0, 3.14/2) /n
+    movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0) /n
+    movej((c, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0) /n
+    movej((c+b, d+a, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0) /n
+    movej((c+b, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0) /n
+    movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0) /n
+    movej((c, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0) /n
+    movej((c+(7*b/8), d+(a/4), 10, 0, 0, 3.14/2), 3, 0.75, 0, 0) /n
+    movej((c+(7*b/8), d+(a/4), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0) /n
+    movej((c+(8b/7), d+(-a/4), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0) /n
+    movej((c+(8b/7), d+(-a/4), 0, 0, 0, 3.14/2), 3, 0.75, 0, 0) /n
+    movej((c+b+g, d, 10, 0, 0, 3.14/2), 3, 0.75, 0, 0) /n
+    c = c+b+g;
+    d = d;
+    socket_send_string(done) /n
+    return(c, d)
+  end
+
   def myR(c, d):
     set_pos(c, d, 10, 0, 0, 3.14/2)
     movej((c, d, 0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
@@ -463,7 +483,7 @@ def myProg():
     open=socket_open("127.0.0.1",23)
 
   while True
-    data = socket_read_ascii_float(2)
+    data = socket_read_ascii_float(1)
     mode = data[1]
 
     while mode == 1:
@@ -500,6 +520,8 @@ def myProg():
         pp = myO
       elif letter == p:
         pp = myP
+      elif letter == q:
+	pp = myQ
       elif letter == r:
         pp = myR
       elif letter == s:
@@ -531,7 +553,7 @@ def myProg():
       pos = socket_read_ascii_float(2)
       x = pos[0]
       y = pos[1]
-      movej((x, y, z=0, 0, 0, 3.14/2), 3, 0.75, 0, 0)
+      movej((x, y, z1, 0, 3.14, 0), 3, 0.75, 0, 0)
     end
   end
 end

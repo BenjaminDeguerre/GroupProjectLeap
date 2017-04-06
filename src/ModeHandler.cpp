@@ -10,7 +10,12 @@ bool ModeHandler::mode1(const StaticGesture gesture) {
 				break;
 			case LEFT_FIVE_RIGHT_FIVE:
 				std::cout << "Accept : " << letterMode1 << std::endl << "Selecting new letter." << std::endl;
-        communicator.sendData(letterMode1);
+				strcpy(buffer, "movel(p[0.73,-0.495,0.5,0,3.14,0]); \r\n");
+				communicator.sendData(buffer);
+				for (size_t i = 0; i < 100; i++) {
+					std::cout << i;
+				}
+				//communicator.sendData("movel(p[0.53, -0.495+ (0.050/3), 0.172, 0, 3.14, 0])\n");
 				letterSelected = false;
 				break;
 			case FIVE_FINGERS_LEFT_HAND:

@@ -31,7 +31,8 @@ private:
   bool stopMode3 = false;
 
 	Communicator communicator;
-
+  char buffer[100];
+	
 public:
   bool mode1(const StaticGesture gesture);
   bool mode2(const StaticGesture gesture, const Leap::GestureList gestures, const Leap::FingerList fingers);
