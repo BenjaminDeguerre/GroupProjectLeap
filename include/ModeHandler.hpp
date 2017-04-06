@@ -37,6 +37,8 @@ private:
 
 	void writeLetter(char *letter);
 	void writeLetterA();
+	void writeLetterB();
+	void writeLetterC();
 
 public:
 	ModeHandler();

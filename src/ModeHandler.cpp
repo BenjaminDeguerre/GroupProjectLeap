@@ -239,6 +239,12 @@ void ModeHandler::writeLetter(char *letter) {
 		case 'a':
 			writeLetterA();
 			break;
+		case 'b':
+			writeLetterB();
+			break;
+		case 'c':
+			writeLetterC();
+			break;
 		default:
 			std::cout << "Unknown letter." << '\n'; //Should not go through here
 			break;
@@ -281,4 +287,97 @@ void ModeHandler::writeLetterA() {
 	communicator.sendData(buffer);
 
 	c = c+b+g;
+}
+
+void ModeHandler::writeLetterB() {
+	sprintf(buffer, "set_pos(%f, %f, %f, 0, 3.14, 0)\n", c, d, z1);
+	std::cout << c << '\n';
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c, d, z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c, d + a, z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c + (3*b/4), d+a, z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c + b, d+(7*a/8), z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c + b, d + (5 * a / 8), z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c + (3*b/4), d + (a / 2), z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c, d + (a / 2), z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c+(3*b/4), d + (a / 2), z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c + b, d + (3*a / 8), z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c + b, d + (a / 8), z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c + (3*b/4), d, z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c, d, z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c, d, z1);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c + b + g, d, z1);
+	communicator.sendData(buffer);
+
+	c = c + b + g;
+
+
+}
+
+void ModeHandler::writeLetterC() {
+	sprintf(buffer, "set_pos(%f, %f, %f, 0, 3.14, 0)\n", c, d, z1);
+	std::cout << c << '\n';
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c+b, d+(7*a/8), z1);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c + b, d + (7 * a / 8), z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c + (3*b / 4), d + a, z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c + (b/4), d+a, z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c, d + (7*a / 8), z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c, d+(a/8), z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c+(b/4), d, z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c+(3*b/4), d, z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c + b, d + (a / 8), z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c + b, d + (a / 8), z1);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c + b + g, d, z1);
+	communicator.sendData(buffer);
+
+	c = c + b + g;
 }
