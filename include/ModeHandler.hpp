@@ -25,15 +25,21 @@ private:
 	bool initialized = false;
 	cv::Point previous = cv::Point(rows - 40, cols / 2), actual = cv::Point(rows - 40, cols / 2);
 
-	char letterMode1[20];
+	char letterMode1[10];
 	bool letterSelected = false;
 
   bool stopMode3 = false;
 
 	Communicator communicator;
   char buffer[100];
-	
+	float c, d;
+  float a, b, g, z1, z2;
+
+	void writeLetter(char *letter);
+	void writeLetterA();
+
 public:
+	ModeHandler();
   bool mode1(const StaticGesture gesture);
   bool mode2(const StaticGesture gesture, const Leap::GestureList gestures, const Leap::FingerList fingers);
 };

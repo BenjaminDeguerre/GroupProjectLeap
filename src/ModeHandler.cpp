@@ -1,5 +1,8 @@
 #include "ModeHandler.hpp"
 
+#include <stdio.h>
+
+ModeHandler::ModeHandler(): a(0.05), b(0.025), c(0.53), d(-0.495), g(0.02), z1(0.172), z2(0.06) {}
 bool ModeHandler::mode1(const StaticGesture gesture) {
 	if (letterSelected) {
     std::string s;
@@ -10,12 +13,7 @@ bool ModeHandler::mode1(const StaticGesture gesture) {
 				break;
 			case LEFT_FIVE_RIGHT_FIVE:
 				std::cout << "Accept : " << letterMode1 << std::endl << "Selecting new letter." << std::endl;
-				strcpy(buffer, "movel(p[0.73,-0.495,0.5,0,3.14,0]); \r\n");
-				communicator.sendData(buffer);
-				for (size_t i = 0; i < 100; i++) {
-					std::cout << i;
-				}
-				//communicator.sendData("movel(p[0.53, -0.495+ (0.050/3), 0.172, 0, 3.14, 0])\n");
+				writeLetter(letterMode1);
 				letterSelected = false;
 				break;
 			case FIVE_FINGERS_LEFT_HAND:
@@ -234,4 +232,53 @@ bool ModeHandler::mode2(const StaticGesture gesture, const Leap::GestureList ges
   	}
   }
   return true;
+}
+
+void ModeHandler::writeLetter(char *letter) {
+	switch (*letter) {
+		case 'a':
+			writeLetterA();
+			break;
+		default:
+			std::cout << "Unknown letter." << '\n'; //Should not go through here
+			break;
+	}
+}
+
+void ModeHandler::writeLetterA() {
+	sprintf(buffer, "set_pos(%f, %f, %f, 0, 3.14, 0)\n", c, d, z1);
+	std::cout << c << '\n';
+	communicator.sendData(buffer);
+
+  sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c, d, z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c+(b/2), d+a, z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c+b, d, z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c+b, d, z1);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c, d+(a/3), z1);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c, d+(a/3), z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c+b, d+(a/3), z2);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c+b, d+(a/3), z1);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c+b, d, z1);
+	communicator.sendData(buffer);
+
+	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", c+b+g, d, z1);
+	communicator.sendData(buffer);
+
+	c = c+b+g;
 }
