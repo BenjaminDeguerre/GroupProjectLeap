@@ -4,9 +4,9 @@
 Communicator::Communicator() {
   WSAStartup(MAKEWORD(2,2), &WSAData);
   sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-  sin.sin_addr.s_addr = inet_addr("192.168.0.10");
+  sin.sin_addr.s_addr = inet_addr("192.168.0.50");
   sin.sin_family = AF_INET;
-  sin.sin_port = htons(2100);
+  sin.sin_port = htons(30001);
   iResult = connect(sock, (SOCKADDR *)&sin, sizeof(sin));
 
   if (iResult == SOCKET_ERROR) {
@@ -24,9 +24,10 @@ Communicator::~Communicator(){
   WSACleanup();
 }
 
-int Communicator::sendData(char *data) {
+int Communicator::sendData(char *data, bool delay, int size) {
   std::cout << data << '\n';
-  int ok = send(sock, data, 100, 0);
-  Sleep(1000);
+  int ok = send(sock, data, size, 0);
+  //std::cout << ok << std::endl;
+  if (delay) Sleep(5000);
   return ok;
 }
