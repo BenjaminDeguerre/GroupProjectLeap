@@ -24,10 +24,9 @@ Communicator::~Communicator(){
   WSACleanup();
 }
 
-int Communicator::sendData(char *data, bool delay, int size) {
+int Communicator::sendData(std::string data, bool delay) {
   std::cout << data << '\n';
-  int ok = send(sock, data, size, 0);
-  //std::cout << ok << std::endl;
-  if (delay) Sleep(5000);
+  int ok = send(sock, data.data(), data.size(), 0);
+  if (delay) Sleep(100);
   return ok;
 }

@@ -20,7 +20,7 @@ bool ModeHandler::mode1(const StaticGesture gesture) {
 			case FIVE_FINGERS_LEFT_HAND:
 				letterSelected = false;
 				strcpy(letterMode1, "!");
-				communicator.sendData(letterMode1);
+				writeLetter(letterMode1);
 				return false;
 				break;
 			default:
@@ -233,7 +233,7 @@ bool ModeHandler::mode2(const StaticGesture gesture, const Leap::GestureList ges
   	if (fingerTip.x != 0 && fingerTip.y != 0) {
       sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", fingerTip.x + 0.160, fingerTip.y - 0.58, z2);
       std::string s = buffer;
-      communicator.sendData(buffer, false, s.size());
+      communicator.sendData(s, false);
   		previous.x = actual.x;
   		previous.y = actual.y;
   		actual.y = -static_cast<int>(fingerTip.y) + rows - 40;
@@ -264,109 +264,111 @@ void ModeHandler::writeLetter(char *letter) {
 }
 
 void ModeHandler::writeLetterA() {
-	//sprintf(buffer, "set_pos(%f, %f, %f, 0, 3.14, 0)\n", c, d, z1);
-	//std::cout << c << '\n';
-	//communicator.sendData(buffer);
-  std::string s;
-  sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c, d, z2);
-  s.append(buffer);
-  communicator.sendData(buffer, true, s.size());
+	std::ostringstream ss;
 
-  
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c+(b/2), d+a, z2);
-  s.clear();
-  s.append(buffer);
-	communicator.sendData(buffer, true, s.size());
+	ss << "movel(p[" << c << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c+b, d, z2);
-  s.clear();
-  s.append(buffer);
-	communicator.sendData(buffer, true, s.size());
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+(b/2) << ", " << d+a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c+b, d, z1);
-  s.clear();
-  s.append(buffer);
-	communicator.sendData(buffer, true, s.size());
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c, d+(a/3), z1);
-  s.clear();
-  s.append(buffer);
-	communicator.sendData(buffer, true, s.size());
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c, d+(a/3), z2);
-  s.clear();
-  s.append(buffer);
-	communicator.sendData(buffer, true, s.size());
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d+(a/3) << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c+b, d+(a/3), z2);
-  s.clear();
-  s.append(buffer);
-	communicator.sendData(buffer, true, s.size());
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d+(a/3) << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c+b, d+(a/3), z1);
-  s.clear();
-  s.append(buffer);
-	communicator.sendData(buffer, true, s.size());
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b << ", " << d+(a/3) << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c+b, d, z1);
-  s.clear();
-  s.append(buffer);
-	communicator.sendData(buffer, true, s.size());
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b << ", " << d+(a/3) << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c+b+g, d, z1);
-  s.clear();
-  s.append(buffer);
-	communicator.sendData(buffer, true, s.size());
+  ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+  ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b+g << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
 	c = c+b+g;
 }
 
 void ModeHandler::writeLetterB() {
-	sprintf(buffer, "set_pos(%f, %f, %f, 0, 3.14, 0)\r\n", c, d, z1);
-	std::cout << c << '\r\n';
-	communicator.sendData(buffer);
+
+	std::ostringstream ss;
+
+	ss << "movel(p[" << c << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d+a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + (3*b/4) << ", " << d+a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b << ", " << d+(7*a/8) << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b << ", " << d + (5 * a / 8) << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + (3*b/4) << ", " << d + (a / 2) << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d + (a / 2) << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+(3*b/4) << ", " << d + (a / 2) << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b << ", " << d + (3*a / 8) << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b << ", " << d + (a / 8) << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + (3*b/4) << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
 	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c, d, z2);
-	communicator.sendData(buffer);
-
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c, d + a, z2);
-	communicator.sendData(buffer);
-
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + (3*b/4), d+a, z2);
-	communicator.sendData(buffer);
-
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + b, d+(7*a/8), z2);
-	communicator.sendData(buffer);
-
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + b, d + (5 * a / 8), z2);
-	communicator.sendData(buffer);
-
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + (3*b/4), d + (a / 2), z2);
-	communicator.sendData(buffer);
-
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c, d + (a / 2), z2);
-	communicator.sendData(buffer);
-
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c+(3*b/4), d + (a / 2), z2);
-	communicator.sendData(buffer);
-
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + b, d + (3*a / 8), z2);
-	communicator.sendData(buffer);
-
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + b, d + (a / 8), z2);
-	communicator.sendData(buffer);
-
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + (3*b/4), d, z2);
-	communicator.sendData(buffer);
-
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c, d, z2);
-	communicator.sendData(buffer);
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
 	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c, d, z1);
-	communicator.sendData(buffer);
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
 	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + b + g, d, z1);
-	communicator.sendData(buffer);
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b+g << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
 	c = c + b + g;
 
@@ -374,42 +376,56 @@ void ModeHandler::writeLetterB() {
 }
 
 void ModeHandler::writeLetterC() {
-	sprintf(buffer, "set_pos(%f, %f, %f, 0, 3.14, 0)\r\n", c, d, z1);
-	std::cout << c << '\r\n';
-	communicator.sendData(buffer);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c+b, d+(7*a/8), z1);
-	communicator.sendData(buffer);
+	std::ostringstream ss;
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + b, d + (7 * a / 8), z2);
-	communicator.sendData(buffer);
+	ss << "movel(p[" << c << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + (3*b / 4), d + a, z2);
-	communicator.sendData(buffer);
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b << ", " << d+(7*a/8) << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + (b/4), d+a, z2);
-	communicator.sendData(buffer);
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b << ", " << d + (7 * a / 8) << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c, d + (7*a / 8), z2);
-	communicator.sendData(buffer);
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + (3*b / 4) << ", " << d + a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c, d+(a/8), z2);
-	communicator.sendData(buffer);
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + (b/4) << ", " << d+a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c+(b/4), d, z2);
-	communicator.sendData(buffer);
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d + (7*a / 8) << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c+(3*b/4), d, z2);
-	communicator.sendData(buffer);
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d+(a/8) << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + b, d + (a / 8), z2);
-	communicator.sendData(buffer);
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+(b/4) << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+(3*b/4) << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b << ", " << d + (a / 8) << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
 	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + b, d + (a / 8), z1);
-	communicator.sendData(buffer);
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b << ", " << d + (a / 8) << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + b + g, d, z1);
-	communicator.sendData(buffer);
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b+g << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
 
 	c = c + b + g;
 }

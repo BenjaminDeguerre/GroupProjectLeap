@@ -17,5 +17,5 @@ private:
 public:
   Communicator();
   ~Communicator();
-  int sendData(char *data, bool delay = true, int size = 100);
+  int sendData(std::string data, bool delay = true);
 };
