@@ -3,13 +3,13 @@
 class StaticGestures {
   +StaticGestures()
   +~StaticGestures()
-  +StaticGestures(hand)
+  +StaticGestures(Leap::HandList hands)
   +StaticGesture getGesture()
   -StaticGesture detectGestureOneHand()
   -StaticGesture detectGestureTwoHands()
 
 
-  -HandList hands
+  -Leap::HandList hands
   -int handCount
 }
 
@@ -56,6 +56,11 @@ class DetectionListener {
 class ModelHandler {
   +bool mode1(StaticGesture gesture)
   +bool mode2(StaticGesture gesture, Leap::GestureList gestures, Leap::FingerList fingers)
+  -void writeLetter(char *letter);
+	-void writeLetterA();
+	-void writeLetterB();
+	-void writeLetterC();
+  -void writeLetter...();
 
   -Communicator communicator
 }
@@ -63,19 +68,17 @@ class ModelHandler {
 class Communicator {
   -WSADATA WSAData
   -SOCKET sock
-  -SOCKET csock
   -SOCKADDR_IN sin
-  -SOCKADDR_IN csin
-  -int sinsize
+  -int iResult
 
   +Communicator()
   +~Communicator()
-  +sendData(char*)
+  +sendData(string data, bool delay)
 }
 
 class GestValidator {
-  +GestValidator() :currentGesture(ERROR_SG), count(0), frameLimit(10) {}
-	+~GestValidator() {}
+  +GestValidator()
+	+~GestValidator()
 
 	+void setFrameLimit(int limit)
 	+int getFrameLimit()

@@ -61,6 +61,7 @@ private:
 	void writeLetterW();
 	void writeLetterX();
 	void writeLetterY();
+  void writeLetterZ();
 	void writeLetterSpace();
 
 public:

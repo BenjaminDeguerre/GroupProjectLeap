@@ -7,12 +7,8 @@ class Communicator {
 private:
   WSADATA WSAData;
   SOCKET sock;
-  SOCKET csock;
   SOCKADDR_IN sin;
-  SOCKADDR_IN csin;
-  int sinsize;
   int iResult;
-  std::string s;
 
 public:
   Communicator();

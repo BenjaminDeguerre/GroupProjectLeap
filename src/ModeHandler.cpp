@@ -231,9 +231,10 @@ bool ModeHandler::mode2(const StaticGesture gesture, const Leap::GestureList ges
       fingerTip.y = 0;
     }
   	if (fingerTip.x != 0 && fingerTip.y != 0) {
-      sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\n", fingerTip.x + 0.160, fingerTip.y - 0.58, z2);
-      std::string s = buffer;
-      communicator.sendData(s, false);
+			std::ostringstream ss;
+			ss.str(std::string());//clearing the output
+			ss << "movel(p[" << fingerTip.x + 0.160 << ", " << fingerTip.y - 0.58 << ", " << z2 << ", 0, 3.14, 0])\r\n";
+			communicator.sendData(ss.str());
   		previous.x = actual.x;
   		previous.y = actual.y;
   		actual.y = -static_cast<int>(fingerTip.y) + rows - 40;
@@ -427,17 +428,14 @@ void ModeHandler::writeLetterB() {
 	ss << "movel(p[" << c + (3*b/4) << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
 	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c, d, z2);
 	ss.str(std::string());//clearing the output
 	ss << "movel(p[" << c << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
 	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c, d, z1);
 	ss.str(std::string());//clearing the output
 	ss << "movel(p[" << c << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
 	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + b + g, d, z1);
 	ss.str(std::string());//clearing the output
 	ss << "movel(p[" << c+b+g << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
 	communicator.sendData(ss.str(), true);
@@ -490,7 +488,6 @@ void ModeHandler::writeLetterC() {
 	ss << "movel(p[" << c+b << ", " << d + (a / 8) << ", " << z2 << ", 0, 3.14, 0])\r\n";
 	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + b, d + (a / 8), z1);
 	ss.str(std::string());//clearing the output
 	ss << "movel(p[" << c+b << ", " << d + (a / 8) << ", " << z1 << ", 0, 3.14, 0])\r\n";
 	communicator.sendData(ss.str(), true);
@@ -591,7 +588,6 @@ void ModeHandler::writeLetterE() {
 	ss << "movel(p[" << c << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
 	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + b, d + (a / 8), z1);
 	ss.str(std::string());//clearing the output
 	ss << "movel(p[" << c << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
 	communicator.sendData(ss.str(), true);
@@ -701,7 +697,6 @@ void ModeHandler::writeLetterG() {
 	ss << "movel(p[" << c + (b/2) << ", " << d + (a / 3) << ", " << z2 << ", 0, 3.14, 0])\r\n";
 	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + b, d + (a / 8), z1);
 	ss.str(std::string());//clearing the output
 	ss << "movel(p[" << c + (b/2) << ", " << d + (a / 3) << ", " << z1 << ", 0, 3.14, 0])\r\n";
 	communicator.sendData(ss.str(), true);
@@ -758,12 +753,10 @@ void ModeHandler::writeLetterH() {
 	ss << "movel(p[" << c << ", " << d + (a / 2) << ", " << z2 << ", 0, 3.14, 0])\r\n";
 	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + b, d + (a / 8), z1);
 	ss.str(std::string());//clearing the output
 	ss << "movel(p[" << c + b << ", " << d + (a / 2) << ", " << z2 << ", 0, 3.14, 0])\r\n";
 	communicator.sendData(ss.str(), true);
 
-	sprintf(buffer, "movel(p[%f, %f, %f, 0, 3.14, 0])\r\n", c + b, d + (a / 8), z1);
 	ss.str(std::string());//clearing the output
 	ss << "movel(p[" << c + b << ", " << d + (a / 2) << ", " << z1 << ", 0, 3.14, 0])\r\n";
 	communicator.sendData(ss.str(), true);
@@ -1169,4 +1162,40 @@ void ModeHandler::writeLetterR() {
 	communicator.sendData(ss.str(), true);
 
 	c = c + b + g;
+}
+
+void ModeHandler::writeLetterS() {
+	std::cout << "/* Not done */" << '\n';
+}
+
+void ModeHandler::writeLetterT() {
+	std::cout << "/* Not done */" << '\n';
+}
+
+void ModeHandler::writeLetterU() {
+	std::cout << "/* Not done */" << '\n';
+}
+
+void ModeHandler::writeLetterV() {
+	std::cout << "/* Not done */" << '\n';
+}
+
+void ModeHandler::writeLetterW() {
+	std::cout << "/* Not done */" << '\n';
+}
+
+void ModeHandler::writeLetterX() {
+	std::cout << "/* Not done */" << '\n';
+}
+
+void ModeHandler::writeLetterY() {
+	std::cout << "/* Not done */" << '\n';
+}
+
+void ModeHandler::writeLetterZ() {
+	std::cout << "/* Not done */" << '\n';
+}
+
+void ModeHandler::writeLetterSpace() {
+	std::cout << "/* Not done */" << '\n';
 }
