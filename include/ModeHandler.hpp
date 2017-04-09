@@ -39,6 +39,29 @@ private:
 	void writeLetterA();
 	void writeLetterB();
 	void writeLetterC();
+	void writeLetterD();
+	void writeLetterE();
+	void writeLetterF();
+	void writeLetterG();
+	void writeLetterH();
+	void writeLetterI();
+	void writeLetterJ();
+	void writeLetterK();
+	void writeLetterL();
+	void writeLetterM();
+	void writeLetterN();
+	void writeLetterO();
+	void writeLetterP();
+	void writeLetterQ();
+	void writeLetterR();
+	void writeLetterS();
+	void writeLetterT();
+	void writeLetterU();
+	void writeLetterV();
+	void writeLetterW();
+	void writeLetterX();
+	void writeLetterY();
+	void writeLetterSpace();
 
 public:
 	ModeHandler();
