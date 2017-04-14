@@ -1,13 +1,12 @@
 \section{Conception}
 
 This section will detail the conception and the class diagram of our project. The following graph shows the different classes we used in the project.
-
-\begin{figure}
- \centering
- \input{../uml/classDiagram.png}
- \caption{Class diagram}
- \label{figure:example}
-\end{figure}
+%
+% \begin{figure}
+%  \centering
+%  \input{classDiagram.pdf}
+%  \caption{Class diagram}
+% \end{figure}
 
 \subsection{StaticGesture and StaticGestures}
 
@@ -18,7 +17,7 @@ StaticGestures (with an s) is the class which allow the user to detect the Stati
 \subsection{GestValidator}
 
 As far as StaticGestures is concerned, a new gesture is possibly detected after each new frame. Since this is not usable for the user, the class GestValidator was added. This class allows to set a number of frame on which the the gesture needs to be in order to be validated.
-Within this class, two functions need to be detailed, update and SetGesture. Their aim can seem identical when they are not, update allows the user to update the gesture within the GestValidator object i.e 11th gesture is CLOSED_HAND whereas setGesture set the gesture count to 0 i.e 1st gesture is now CLOSE_HAND (and if update is used after that we have 2nd gesture is ...).
+Within this class, two functions need to be detailed, update and SetGesture. Their aim can seem identical when they are not, update allows the user to update the gesture within the GestValidator object i.e 11th gesture is CLOSED\_HAND whereas setGesture set the gesture count to 0 i.e 1st gesture is now CLOSE\_HAND (and if update is used after that we have 2nd gesture is ...).
 
 \subsection{DetectionListener}
 
