@@ -1,2 +1,4 @@
 \contentsline {section}{\numberline {1}Introduction}{}
-\contentsline {section}{\numberline {2}Conclusion}{}
+\contentsline {section}{\numberline {2}Mode 1 - Writting letters}{}
+\contentsline {section}{\numberline {3}Mode 2 - Hand tracking}{}
+\contentsline {section}{\numberline {4}Conclusion}{}

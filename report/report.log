@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.11.21)  3 APR 2017 10:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2016.11.21)  14 APR 2017 09:31
 entering extended mode
-**./report.tex
-(report.tex
+**./Report.tex
+(Report.tex
 LaTeX2e <2016/03/31> patch level 3
 Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
 (D:\MiKTeX\tex\latex\base\article.cls
@@ -865,10 +865,10 @@ Package: multirow 2016/10/11 v2.1 Span multiple rows of a table
 \bigstrutjot=\dimen296
 )
 \@nomenclaturefile=\write4
-\openout4 = `report.nlo'.
+\openout4 = `Report.nlo'.
 
 
-Writing nomenclature file report.nlo
+Writing nomenclature file Report.nlo
 (D:\MiKTeX\tex\latex\listings\lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
@@ -880,12 +880,12 @@ File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 )
 (D:\MiKTeX\tex\generic\pgfplots\libs\tikzlibrarypgfplots.units.code.tex)
 \@indexfile=\write5
-\openout5 = `report.idx'.
+\openout5 = `Report.idx'.
 
 
-Writing index file report.idx
-(report.aux (Introduction.aux) (Conclusion.aux))
-\openout1 = `report.aux'.
+Writing index file Report.idx
+(Report.aux (Introduction.aux) (Mode1.aux) (Mode2.aux) (Conclusion.aux))
+\openout1 = `Report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
 LaTeX Font Info:    ... okay on input line 56.
@@ -1024,38 +1024,70 @@ Package pdftex.def Info: logo.jpg used on input line 91.
 (pdftex.def)             Requested size: 433.61894pt x 252.94438pt.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <./logo.jpg>] (report.toc)
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <./logo.jpg>] (Report.toc)
 \tf@toc=\write6
-\openout6 = `report.toc'.
+\openout6 = `Report.toc'.
 
  [1]
 \openout2 = `Introduction.aux'.
 
- (Introduction.tex) [2
+ (Introduction.tex
+<mode_selection.png, id=17, 395.22656pt x 166.37157pt>
+File: mode_selection.png Graphic file (type png)
+
+<use mode_selection.png>
+Package pdftex.def Info: mode_selection.png used on input line 3.
+(pdftex.def)             Requested size: 395.22559pt x 166.37114pt.
+) [2
+
+ <./mode_selection.png>]
+\openout2 = `Mode1.aux'.
+
+ (Mode1.tex
+<static_gestures.png, id=24, 274.02374pt x 407.27156pt>
+File: static_gestures.png Graphic file (type png)
+
+<use static_gestures.png>
+Package pdftex.def Info: static_gestures.png used on input line 5.
+(pdftex.def)             Requested size: 274.02307pt x 407.27055pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+
+ []
+
+) [3
+
+
+ <./static_gestures.png>]
+\openout2 = `Mode2.aux'.
+
+ (Mode2.tex) [4
+
 
 ]
 \openout2 = `Conclusion.aux'.
 
- (Conclusion.tex) [3
+ (Conclusion.tex) [5
 
 
-] (report.aux (Introduction.aux) (Conclusion.aux)) ) 
+] (Report.aux
+(Introduction.aux) (Mode1.aux) (Mode2.aux) (Conclusion.aux)) ) 
 Here is how much of TeX's memory you used:
- 34679 strings out of 493333
- 832467 string characters out of 3146953
- 921844 words of memory out of 3000000
- 37713 multiletter control sequences out of 15000+200000
+ 34714 strings out of 493333
+ 832933 string characters out of 3146953
+ 921945 words of memory out of 3000000
+ 37732 multiletter control sequences out of 15000+200000
  10116 words of font info for 39 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,5n,120p,10376b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
-<D:/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmbx10.pfb><D:/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-<D:/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><D:/MiKTeX/fonts/type1/pu
-blic/amsfonts/cm/cmr12.pfb><D:/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb
->
-Output written on report.pdf (4 pages, 74479 bytes).
+ 69i,6n,120p,10376b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
+<D:/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmbx10.pfb><D:/MiKTeX/fonts/type1/public/amsfonts/cm/c
+mbx12.pfb><D:/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><D:/MiKTeX/font
+s/type1/public/amsfonts/cm/cmr10.pfb><D:/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmr12.pfb><D:/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on Report.pdf (6 pages, 199392 bytes).
 PDF statistics:
- 39 PDF objects out of 1000 (max. 8388607)
+ 54 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 18 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28 words of extra memory for PDF output out of 10000 (max. 10000000)
 
