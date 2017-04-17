@@ -1,6 +1,6 @@
 \section{Mode 1 - Static mode}
 \subsection {Mode description}
-The first mode allows the user to select and write a proper letter. In the English alphabet there are 26 letters, so to be able to use all of them a lot of gestures had to be specified and implemented. Our aim was to do this in the simplest way possible, because a too complicated set of movements and signs would have not been user-friendly and straightforward. The scheme is shown in figure \ref{fig:letters}.
+The first mode allows the user to select and write a proper letter. In the English alphabet there are 26 letters, so to be able to use all of them, a lot of gestures had to be specified and implemented. Our aim was to do this in the simplest way possible, because a too complicated set of movements and signs would have not been user-friendly and straightforward. The scheme is shown in figure \ref{fig:letters}.
 
 \begin{figure}[H]
 	\includegraphics{static_gestures}
@@ -9,7 +9,7 @@ The first mode allows the user to select and write a proper letter. In the Engli
 	\label{fig:letters}
 \end{figure}
 
-Every letter and command has its own and unique command. \textbf{Differentation is done by counting the number of extended fingers in each hands,}. It is a very clear and easy to learn set of gestures. For instance, when only one finger in the left hand is extended and at the same time, the right hand is fully open, it means that letter "J" should be drawn. The system works well when the Leap detects both hands of the user.\\
+Every letter and command has its own and unique command. \textbf{Differentation is done by counting the number of extended fingers in each hands}. It is a very clear and easy to learn set of gestures. For instance, when only one finger in the left hand is extended and at the same time, the right hand is fully open, it means that letter "J" should be drawn. The system works well when the Leap detects both hands of the user.\\
 
 However, sometimes the wrong letter was selected. To avoid wrong comunication with the robot, two additional gestures were added - command "Accept" to send the proper letter to the robot and command "Cancel" to reset the current letter and restart the selection. We also wanted to be able to write full sentences. Thus, we decided to implement gesture to draw dot and the space character. It is easy to see in the Figure \ref{fig:letters} that there are 6 more possible gestures that are not used. The set of gestures can then be easily extended. 
 
