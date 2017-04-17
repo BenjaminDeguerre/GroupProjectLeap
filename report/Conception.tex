@@ -2,7 +2,7 @@
 
 This section will detail the conception and the class diagram of our project. The following graph shows the different classes we used in the project.
 
-\begin{figure}[h]
+\begin{figure}[H]
  \centering
  \includegraphics[scale=0.5]{../uml/classDiagram.png}
  \caption{Class diagram}
@@ -10,7 +10,7 @@ This section will detail the conception and the class diagram of our project. Th
 
 \subsection{StaticGesture and StaticGestures}
 
-StaticGesture (without s) is not really a class, it is an enum that holds all of the static gesture that are possible to detect. The main role of using an enum is not to have to handle the value of each gesture and make it more user friendly. It also simplify the use within the functions for the developper.
+StaticGesture (without s) is not really a class, it is an enum that holds all of the static gesture that are possible to detect. The main role of using an enum is to avoid having to handle the value of each gesture and make it more user friendly. It also simplify the use within the functions for the developper.
 
 StaticGestures (with an s) is the class which allow the user to detect the StaticGesture within a frame. To make it lighter a simple set of hand (Leap::HandList) is required when the object is created. A new object is required to be created each time a new HandList is used. This last part is one of the possible improvement on the code (even if the creation of the new object make sense and is viable).
 
