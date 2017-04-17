@@ -26,7 +26,7 @@ In order to communicate with the robot the program needs to send command followi
 \begin{itemize}
   \item The data must be surrounded by bracket pair
   \item Every data unit must be split by comma
-  \item Must add '\n' as the terminator
+  \item Must add '\\n' as the terminator
 \end{itemize}
 
-But there was trouble with the communication thus it was added a '\r' to the end of the signal. But the main problem was with the size of the buffer that was sent. The buffer was a hundred char long and was sent completely each time. But it seems that the robot needs to receive the exact command, i.e nothing more at the end, no space no nothing, or there is a bug and the robot doesn't recognise the following commands. 
+But there was trouble with the communication thus it was added a '\\r' to the end of the signal. But the main problem was with the size of the buffer that was sent. The buffer was a hundred char long and was sent completely each time. But it seems that the robot needs to receive the exact command, i.e nothing more at the end, no space no nothing, or there is a bug and the robot doesn't recognise the following commands.
