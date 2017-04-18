@@ -21,7 +21,10 @@ We also wanted to be able to write full sentences. Thus, we decided to implement
 
 \subsection{Letters library}
 
+\mbox{}\\
 Additionally to the sign alphabet, a library of letter has been created. This library is, in fact, a set of movements which have to be done by the robot in order to write each of the letters. Each set of movements includes moving in all of the three space dimensions (x, y, z). Letters library is built in such way that every letter is written in a rectangle of sides length of b and a, and left down corner coordinates of (c, d). After finishing all of the movements for a letter, the last move is used to obtain new starting position for the next letter, so the point of coordinate (c, d) is updated after every new letter. It allows robot to write letters next to each other, which makes writing words or sentences possible. Starting point (c,d) as well as z1, z2 (z1 being the position on the z axis when the marker is not touching the surface and z2 being the writing position) and sides lengths of a and b might be specified by user at the beginning of this program, which makes it more universal and multifunctional.\\
+
+
 
 \begin{figure}[H]
 	\includegraphics[scale=0.8]{Aletter}
@@ -30,7 +33,9 @@ Additionally to the sign alphabet, a library of letter has been created. This li
 	\label{fig:Aletter}
 \end{figure}
 
+\mbox{}\\
 Functions \textit{writeLetter} are constructed in such a way that the whole command is send to the robot controller, in this case it is the command \textit{movel(p[x, y, z, 0, 3.14, 0]}. This kind of communication was chosen because of the possibilities of changing the coordinates of the starting point (c, d), which is a crucial part for the project main idea and it was not possible or much more complicated to use other methods of working with the robot. What is more, the function \textit{movel} was chosen because of its functionality – this function makes robot move in straight line, without changing the position of the robot’s head (which is the main difference with the other command \textit{movej} which reaches the target position in the shortest possible way, which is not necessarily the straight line). After sending the command, a delay is set before sending the next command in order to allow the robot to finish the first task. If there was no delay, the robot’s controller, after receiving a pack of commands, would perform only the last one, which means that the idea of using delay is crucial for program operation. An example function for writing letter is given in the Figure \ref{fig:Aletter}. \\
+
 
 The result of this set of movement is given in Figure\ref{fig:letter}, showing the letter A written by the robot’s arm after the Leap Motion recognised, first the gesture responsible for enabling mode 1, then the gesture responsible for letter A and, finally, the gesture of acceptance. Inaccuracies visible in the Figure\ref{fig:letter} result from inappropriate marker placement and not because of the program. Those could be improved in case of other program tests. \\
 
@@ -41,4 +46,5 @@ The result of this set of movement is given in Figure\ref{fig:letter}, showing t
 	\label{fig:letter}
 \end{figure}
 
+\mbox{}\\
 Prepared letters library is only one example of possible library which could be created for this kind of program. Since designed gestures are meant to be simple and intuitive for any user, they can be used with other libraries like handwritten letters, small letters, numbers and any non-Latin alphabet etc., which makes this program more universal and user-friendly. Set of gestures are not too difficult to obtain, but need time to be prepared correctly. Its main advantage is the fact that one they are written, there is no need to worry about robot’s movements after launching the program. To make it easier for user, in case of future work, additional application could be proposed, which would automatically prepare set of gestures and save them in program’s memory.
