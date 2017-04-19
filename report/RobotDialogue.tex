@@ -2,7 +2,7 @@
 
 \subsection{Client-Server}
 
-The robot uses a TCP protocole for communication, this means that the robot communicate with potential client or sever (depending on how you set up the robot) in a connected way. The main advantage of this type of communication is that we are sure that the message send to or by the robot will arrive, but the main disavantadge is that the functions to read data are blocking. It means that if there is any problem on the network or if one of the two part are lagging or fail to communicate the whole program could freeze.
+The robot uses a TCP protocole for communication, this means that the robot communicate with potential client or sever (depending on how you set up the robot) in a connected way. The main advantage of this type of communication is that we are sure that the message send to or by the robot will arrive, but the main disavantage is that the functions to read data are blocking. It means that if there is any problem on the network or if one of the two part are lagging or fail to communicate the whole program could freeze.
 
 In our case the robot is set as a server and the program as a client. At first the program was digned to work the other way around, the program as a server and the robot as a client. This way would have been the simplest one because it would have used the blocking call of the TCP communication to handle the delays for the robot to move.
 The workflow would have been the following :
