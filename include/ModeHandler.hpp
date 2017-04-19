@@ -61,8 +61,9 @@ private:
 	void writeLetterW();
 	void writeLetterX();
 	void writeLetterY();
-  void writeLetterZ();
+	void writeLetterZ();
 	void writeLetterSpace();
+	void writeLetterDot();
 
 public:
 	ModeHandler();

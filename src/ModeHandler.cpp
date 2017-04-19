@@ -330,6 +330,9 @@ void ModeHandler::writeLetter(char *letter) {
 		case ' ':
 			writeLetterSpace();
 			break;
+		case '.':
+			writeLetterDot();
+			break;
 		default:
 			std::cout << "Unknown letter." << '\n'; //Should not go through here
 			break;
@@ -1165,37 +1168,338 @@ void ModeHandler::writeLetterR() {
 }
 
 void ModeHandler::writeLetterS() {
-	std::cout << "/* Not done */" << '\n';
+	ss << "movel(p[" << c << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b << ", " << d+a << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b << ", " << d + a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d + a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d + (a/2) << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b << ", " << d + (a/2) << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b + g << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	c = c + b + g;
 }
 
 void ModeHandler::writeLetterT() {
-	std::cout << "/* Not done */" << '\n';
+	ss << "movel(p[" << c << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d + a << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d + a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b << ", " << d + a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + (b/2) << ", " << d + a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + (b/2) << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + (b/2) << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b + g << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	c = c + b + g;
 }
 
 void ModeHandler::writeLetterU() {
-	std::cout << "/* Not done */" << '\n';
+	ss << "movel(p[" << c << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d + a << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d + a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b << ", " << d + a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b << ", " << d + a << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+	
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b + g << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	c = c + b + g;
 }
 
 void ModeHandler::writeLetterV() {
-	std::cout << "/* Not done */" << '\n';
+	ss << "movel(p[" << c << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d +a << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c  << ", " << d + a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + (b/2) << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c +b << ", " << d + a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b << ", " << d + a << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b + g << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	c = c + b + g;
 }
 
 void ModeHandler::writeLetterW() {
-	std::cout << "/* Not done */" << '\n';
+	ss << "movel(p[" << c << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d + a << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d + a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + (b/2) << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b << ", " << d + (a/3)<< ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c +(3*b/2)<< ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + (2*b) << ", " << d+a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + (2*b) << ", " << d+a << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + (2*b) + g << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	c = c + (2*b) + g;
 }
 
 void ModeHandler::writeLetterX() {
-	std::cout << "/* Not done */" << '\n';
+	ss << "movel(p[" << c << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c +b << ", " << d + a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b << ", " << d + a << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d +a << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d+ a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b + g << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	c = c + b + g;
 }
 
 void ModeHandler::writeLetterY() {
-	std::cout << "/* Not done */" << '\n';
+	ss << "movel(p[" << c << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + (b/2)<< ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+(b/2) << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + (b/2) << ", " << d + (a/3) << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d + a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d + a << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + (b/2) << ", " << d+(a/3) << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + (b / 2) << ", " << d + (a / 3) << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b << ", " << d + a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b << ", " << d +a << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b + g << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	c = c + b + g;
 }
 
 void ModeHandler::writeLetterZ() {
-	std::cout << "/* Not done */" << '\n';
+	ss << "movel(p[" << c << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d +a << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d + a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b << ", " << d + a << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c+b << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + b + g << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	c = c + b + g;
 }
 
 void ModeHandler::writeLetterSpace() {
-	std::cout << "/* Not done */" << '\n';
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + g << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	c = c + g;
+}
+
+void ModeHandler::writeLetterDot() {
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d << ", " << z2 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	ss.str(std::string());//clearing the output
+	ss << "movel(p[" << c + g << ", " << d << ", " << z1 << ", 0, 3.14, 0])\r\n";
+	communicator.sendData(ss.str(), true);
+
+	c = c + g;
 }
