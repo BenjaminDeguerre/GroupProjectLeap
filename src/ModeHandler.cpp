@@ -199,7 +199,7 @@ bool ModeHandler::mode2(const StaticGesture gesture, const Leap::GestureList ges
   }
 
   if (!stopMode3 && fingers.count() > 0) {
-  	Leap::Vector fingerTip;
+  	Leap::Vector fingerTip, fingerDrawing;
   	Leap::FingerList::const_iterator fl = fingers.begin();
   	if (fingers.count() != 0) {
   		for (Leap::FingerList::const_iterator fl = fingers.begin(); fl != fingers.end(); fl++) {
@@ -219,11 +219,11 @@ bool ModeHandler::mode2(const StaticGesture gesture, const Leap::GestureList ges
   		positions.insert(positions.begin(), newPosition);
   	}
 
-  	fingerTip = filter.filterMean(positions);
-		std::cout << fingerTip.x << '\n';
-		std::cout << fingerTip.y << '\n';
-    fingerTip.x = fingerTip.x / 1000;
-    fingerTip.y = fingerTip.y / 1000;
+  	fingerDrawing = filter.filterMean(positions);
+		std::cout << fingerDrawing.x << '\n';
+		std::cout << fingerDrawing.y << '\n';
+    fingerTip.x = fingerDrawing.x / 1000;
+    fingerTip.y = fingerDrawing.y / 1000;
     if (fingerTip.x > 1 || fingerTip.x < -1) {
       fingerTip.x = 0;
     }
@@ -237,8 +237,8 @@ bool ModeHandler::mode2(const StaticGesture gesture, const Leap::GestureList ges
 			communicator.sendData(ss.str());
   		previous.x = actual.x;
   		previous.y = actual.y;
-  		actual.y = -static_cast<int>(fingerTip.y) + rows - 40;
-  		actual.x = static_cast<int>(fingerTip.x) * 2 + cols / 2;
+  		actual.y = -static_cast<int>(fingerDrawing.y) + rows - 40;
+  		actual.x = static_cast<int>(fingerDrawing.x) * 2 + cols / 2;
   		line(image, previous, actual, cv::Scalar(0, 0, 0), 5);
       cv::imshow("My image", image);
       cv::waitKey(40);
