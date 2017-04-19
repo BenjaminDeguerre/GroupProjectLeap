@@ -1,5 +1,6 @@
-\section{Mode 1 - Static mode}
-\subsection {Mode description}
+\section{Results and Discussion}
+\subsection{Mode 1 - Static mode}
+\subsubsection {Mode description}
 The first mode allows the user to select and write letters. In the English alphabet there are 26 letters, so to be able to use all of them at least 26 gestures had to be specified and implemented. The aim was to produce a program which is as simple as possible, because a too complicated set of movements and signs would not have been user-friendly and straightforward to use. The scheme is shown in the Figure \ref{fig:letters}.
 
 \begin{figure}[H]
@@ -19,7 +20,7 @@ However, sometimes the wrong letter can be selected. To avoid writing unwanted l
 
 We also wanted to be able to write full sentences. Thus, we decided to implement gesture to draw the dot and the space characters. It is easy to see in the Figure \ref{fig:letters} that there are 6 more gestures that are not used. Also the set of gestures could be easily extended.
 
-\subsection{Letters library}
+\subsubsection{Letters library}
 
 \mbox{}\\
 Additionally to the sign alphabet, a library of letters has been created. This library is, in fact, a set of movements which have to be done by the robot in order to write each of the letters. Each set of movements includes moving in all of the three space dimensions (x, y, z). Letters library is built in such way that every letter is written in a rectangle of sides length of b and a, and left down corner coordinates of (c, d). After finishing all of the movements for a letter, the last move is used to obtain the new starting position for the next letter, so the point of coordinate (c, d) is updated after every new letter. It allows the robot to write letters next to each other, which makes writing words or sentences possible. Starting point (c,d) as well as z1, z2 (z1 being the position on the z axis when the marker is not touching the surface and z2 being the writing position) and sides lengths of a and b might be specified by user at the beginning of this program, which makes it more universal.\\

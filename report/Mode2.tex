@@ -1,6 +1,6 @@
-\section{Mode 2 - Hand tracking}
+\subsection{Mode 2 - Hand tracking}
 
-\subsection{Mode description}
+\subsubsection{Mode description}
 
 This mode allows the user to control directly the head of the robot. The principle is simple: the program tracks the finger of the user with the help of the Leap Motion sensor. The position is then scaled to fit in the robot moving area (over the table for instance). A command is issued to order the robot to move to the calculated position. For testing simplicity, the movements are only allowed over two axes, x and y (you cannot go up), but adding a new direction of movement could be done in a matter of minutes.
 One important thing one could notice is that there is no delay in the information sent to the robot. This lack of a delay is due to the fact that for this particular part it does not matter if the robot misses a few positions, the movement being executed in a small area.
@@ -17,7 +17,7 @@ The black part in the following Figure \ref{fig:cloudNotCloud} corresponds to th
 
 In the Figure \ref{fig:cloudNotCloud} an exemplary output image is shown. It is not the exact set of coordinates that was sent to the robot, but only a tool that helps the user tracking the path of the finger's movement. As it was mentioned before, commands are sent in the real time and some points drawn in the image are missed. Thus, the image made by the robot is a more interpolated and digitized version of an output of the finger tracking displayed on the screen.
 
-\subsection{Filter}
+\subsubsection{Filter}
 
 One of the objectives of this project was to make the Leap Motion less sensible to noise. There are many way to do that and many types of existing filters. But as far as our testing went a simple mean filter is more than enough to stabilize the output of the dynamic mode. The mean filter can be set to work on a different number of positions (the $n$ previous ones).
 One example of the output of the filter is presented in the Figure \ref{fig:cloudNotCloud} as the red line. As can be seen in the figure, the black line is smoothed and the noise caused by the natural shaking of the operator's hand is reduced.
