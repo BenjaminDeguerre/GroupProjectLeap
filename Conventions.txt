@@ -1,9 +1,0 @@
-Within classes :
-	- private first
-	- camelCase for functions and variables names
-	- class name starting with capital letter
-	
-C++ header file in .hpp
-C++ source file in .cpp
-
-No using namespace in the header files
