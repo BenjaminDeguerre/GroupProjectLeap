@@ -5,7 +5,7 @@ The aim was to use the leap motion sensor to control a robotic arm and to make i
 
 Contributors :
 
-	Alix Kamano
-	Anna Zaporowska
-	Benjamin Deguerre
-	Wojciech Jończyk
+..*Alix Kamano
+..*Anna Zaporowska
+..*Benjamin Deguerre
+..*Wojciech Jończyk
