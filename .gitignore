@@ -63,4 +63,7 @@ Debug
 *.out
 *.nlo
 *.synctex.gz
-report/*.pdf
+report/*
+*.pdf
+presentation/*
+pdf/*
