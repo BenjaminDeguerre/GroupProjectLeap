@@ -6,7 +6,6 @@
 
 #pragma comment(lib, "ws2_32.lib")
 
-
 /**
 * Simple program to test the connection with the main program and check if the inforamtion is received.
 **/
