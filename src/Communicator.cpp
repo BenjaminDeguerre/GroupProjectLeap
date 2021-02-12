@@ -24,8 +24,8 @@ Communicator::~Communicator(){
   WSACleanup();
 }
 
+
 int Communicator::sendData(std::string data, bool delay) {
-  //std::cout << data << '\n';
   int ok = send(sock, data.data(), data.size(), 0);
   if (delay) Sleep(100);
   return ok;
