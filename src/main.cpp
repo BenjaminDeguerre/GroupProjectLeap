@@ -17,7 +17,7 @@
 using namespace Leap;
 
 int main(int argc, char** argv) {
-	// Create a sample listener and controller
+	// Create a listener and controller
 	DetectionListener listener;
 	Controller controller;
 
